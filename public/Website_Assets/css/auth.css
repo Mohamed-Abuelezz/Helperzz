@@ -1,0 +1,211 @@
+
+  
+  /******************* Auth Section */
+
+.auth{
+height: 100vh;
+padding: 0;
+margin: 80px auto;
+width: 60%;
+border-radius: 5px;
+/* box-shadow :1px 1px  12px ; */
+border: 0px solid;
+overflow-y: scroll;
+overflow-x: hidden;
+-ms-overflow-style: none;  /* Internet Explorer 10+ */
+scrollbar-width: none;  /* Firefox */
+position: relative;
+}
+/* .auth::-webkit-scrollbar { 
+  display: none; 
+} 
+*/
+.auth:hover{
+cursor: s-resize;
+}
+
+.auth .taps ul{
+    display: flex;
+   justify-content: space-between;
+}
+.auth .taps ul li{flex: 1
+}
+.auth .taps ul .btn{
+    font-size: 15px;
+    padding: 20px ;
+        border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.auth .taps ul .btn:focus {
+outline: none;
+border: none;
+}
+.auth .taps ul .active{
+    background-color: var(--primary);
+color: white;
+}
+.auth .tab-content{
+}
+.auth .tab-content .fields{
+
+    width: 70%;
+    margin:  auto;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;overflow: hidden;
+}
+
+.auth .tab-content .fields .button_1_style{
+    margin: auto;
+    padding: 10px 30px;
+}
+
+
+@media (max-width: 991.98px) { 
+    .auth{
+        width: 90%;
+    }
+    .auth .tab-content .fields{
+        width: 80%;
+        gap: 30px;
+
+    }
+    .auth .taps ul .btn{
+
+font-size: 10px;
+padding: 10px ;
+
+    }
+}
+
+
+
+.avatar-upload {
+  position: relative;
+  margin: 10px auto;
+  width: 200px;
+  text-align: center;
+}
+.avatar-upload .avatar-edit {
+  position: absolute;
+  right: 25px;
+  z-index: 1;
+  bottom:  50px;
+}
+.avatar-upload .avatar-edit input {
+  display: none;
+}
+.avatar-upload .avatar-edit input + label {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 0;
+  border-radius: 100%;
+  background: #FFFFFF;
+  border: 1px solid transparent;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-weight: normal;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avatar-upload .avatar-edit input + label:hover {
+  background: #f1f1f1;
+  border-color: #d6d6d6;
+  color: var(--primary);
+}
+.avatar-upload .avatar-edit input label i {
+  color: var(--primary);
+  text-align: center;
+  margin: auto;
+}
+.avatar-upload .avatar-preview {
+  width: 192px;
+  height: 192px;
+  position: relative;
+  border-radius: 100%;
+  border: 6px solid #F8F8F8;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+.avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+
+@media (max-width: 991.98px) { 
+
+  .avatar-upload {
+      position: relative;
+      margin: 10px auto;
+      width: 150px;
+  }
+  .avatar-upload .avatar-preview {
+      width: 150px;
+      height: 150px;
+      position: relative;
+      border-radius: 100%;
+      border: 6px solid #F8F8F8;
+      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+
+}
+
+
+
+
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
+
+.auth .tab-content .selects {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 10px;
+}
+
+.auth .tab-content  .item{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+
+@media (max-width: 991.98px) { 
+  .auth .tab-content .selects {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  color: white;
+  background-color: var(--primary);
+  border: none;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+}
+  /******************* End Auth Section */
+
+

@@ -1,0 +1,41 @@
+
+
+
+/******************* EditAccount Section */
+.fields{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    margin: auto;
+}
+
+  
+
+  
+
+  @media (max-width: 991.98px) { 
+    .fields{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 90%;
+        margin: auto;
+    }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+/******************* End EditAccount Section */
+
+
+

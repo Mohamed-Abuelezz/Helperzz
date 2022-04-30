@@ -1,0 +1,173 @@
+
+
+
+/******************* Bookings Section */
+
+.bookings .drop{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.cards a {
+  text-decoration: none;
+  color: black;
+}
+.cards .card {
+  border-radius: 20px;
+  transition: 1s;
+  position: relative;
+}
+/* .cards .card:hover {
+  background-color: var(--primary);
+  color: white !important;
+} */
+
+/* .cards .card:hover .personal-data h6,
+.cards .card:hover .personal-data p,
+.cards .card:hover .personal-data .rate,
+.cards .card:hover .content .bio p {
+  color: white !important;
+} */
+
+.cards .card img {
+  border-radius: 20px;
+}
+.cards .content .personal-data {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0px;
+  margin-bottom: 20px;
+}
+
+.cards .content .personal-data h6 {
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 15px;
+}
+.cards .content .personal-data p:nth-of-type(1) {
+  color: gray;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.cards .content .personal-data p:nth-of-type(2) {
+  color: var(--primary);
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.cards .content .personal-data p:nth-of-type(3) {
+  color: grey;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
+}
+.cards .content .personal-data .rate {
+  color: gray;
+}
+.cards .content .personal-data .rate i {
+  color: var(--buttons);
+  font-size: 20px;
+}
+
+.bookings .cards .content .bio{
+   height: 90px; 
+align-items: flex-end;
+}
+
+.cards .content .bio p {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+}
+
+.cards .card .fav {
+  background-color: var(--primary);
+
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 0;
+}
+
+.cards .card .fav i {
+  color: red;
+  font-size: 20px;
+}
+.cards .card .status{
+  text-align: center;
+}
+ .pagi ul{
+ width: 200px !important;
+ margin: auto; 
+ margin-bottom: 5px;
+ display: flex;
+ justify-content: center;
+}
+.pagi ul li a{
+  color: var(--primary);
+}
+.pagi ul li a:hover{
+  background-color: var(--primary);color: white;
+}
+.pagi .active .page-link{
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+@media (max-width: 991.98px) { 
+  
+  h4{
+  font-size: 30px;
+  }
+  .bookings .card .content .date{
+text-align: center;
+  }
+  .bookings .card .content h6{
+font-size: 15px;
+  }
+  .bookings .card{
+    color: white;
+    display: flex;
+  flex-direction: column;
+  }
+
+  .bookings .card .content{  height: 100%;width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: center;
+  padding-top: 5px;
+  }
+  
+
+
+
+
+  .bookings .card img{
+    height: 200px;
+    width: 100%;
+  }
+  .bookings .card .content p{
+    font-size: 10px;
+  padding: 0px 10px;
+  }
+  
+  .bookings .cards .content .bio{
+    height: 130px; 
+ align-items: flex-end;
+ }
+}
+/******************* End Bookings Section */
+
+
+
