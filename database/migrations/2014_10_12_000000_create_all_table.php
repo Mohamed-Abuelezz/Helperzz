@@ -131,7 +131,7 @@ return new class extends Migration
             $table->foreignId('city_id')
                 ->constrained('cities')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('cascade')->nullable();
 
                 $table->tinyInteger('gender');
 

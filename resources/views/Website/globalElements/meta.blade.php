@@ -1,8 +1,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name}}</title>
-<meta http-equiv="content-language" content="ar">
+
+<meta http-equiv="content-language" content="{{Config::get('app.locale')}}">
 
 <meta name="author" content="{{\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name}}">
 <meta name="keywords" content="
@@ -515,8 +515,7 @@ wazayf4u,
 uouo15,
 aegisccc taleo net,
 
-">
-<!--<meta name="description" content="{{ Config::get('app.locale') == 'en' ?  \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->meta_descEn   : \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->meta_descAr}}"> -->
+"/>
 <meta name="_token" content="{{ csrf_token() }}">
 
 {{-- <meta name="referrer" content="unsafe-url">

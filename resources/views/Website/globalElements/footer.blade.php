@@ -101,7 +101,7 @@ footer{
   </ul>
 
 
-        <img src="{{asset('Website_Assets/assets/images/footer.png')}}" />
+        <img src="{{asset('Website_Assets/assets/images/footer.png')}}" alt="footer image" />
 
 
     </div>

@@ -214,6 +214,8 @@ padding: 10px;
 
 .custome-textFiled:focus {
   border: 1px solid var(--primary);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s;
   }
 
   /* Custome CheckBox */
@@ -323,6 +325,7 @@ height: 100%;
 background: #009DAE;
 z-index: 9999;
 display: flex;
+flex-direction: column;
 justify-content: center;
 
 }

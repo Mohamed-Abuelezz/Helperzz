@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
@@ -45,7 +46,7 @@ use Illuminate\Support\Facades\Auth;
 // Artisan::call('storage:link');
 
 Route::get('/test', function () {
-  
+  //test
   Artisan::call('cache:clear');
   Artisan::call('config:clear');
   Artisan::call('config:cache');

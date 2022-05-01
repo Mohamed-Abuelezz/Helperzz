@@ -104,7 +104,6 @@ width: 100vw;
     transition: all 0.5s ease;
   }
   .slide .slide__content--headings .top-title {
-    font-family: "Playball", cursive;
     font-size: 2.5rem;
   }
 
@@ -116,7 +115,6 @@ width: 100vw;
   @media (max-width: 991.98px) { 
 
      .slide .slide__content--headings .top-title {
-      font-family: "Playball", cursive;
       font-size: 1.1rem;
     } 
   
@@ -494,13 +492,14 @@ overflow: hidden;
   .ourmessage{
     display: flex;
 flex-direction: column-reverse;
+justify-content: start;
+min-height: auto;
   }
   .ourmessage .image{
     max-width:100%;
     max-height:100%;
     overflow: hidden;
     display: flex;
-justify-content: center;
 
       }
   .ourmessage .image img{
@@ -531,16 +530,26 @@ position: relative;
 .reviews .items .item{
   display: flex;
   flex-direction: column;
-  background-color: var(--primary);
+  background-color: white;
   align-items: center;
   gap: 10px;
-  color: white;
+  color: black;
   text-align: center;
   padding: 20px 10px;
   border-radius: 15px;
   margin: 50px 10px;
   height: 400px;
 }
+
+.reviews .items .item:hover{
+
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.5);
+transition: box-shadow 1s ;
+cursor: pointer;
+}
+
+
+
 .reviews .items .item img:nth-child(1){
   width: 30px;
 }
@@ -562,7 +571,7 @@ position: relative;
 }
 @media (max-width: 991.98px) { 
   .reviews .items .item{
-    margin: 0px 20px;
+    margin: 10px 20px;
     
   }
   .reviews .items .item p{

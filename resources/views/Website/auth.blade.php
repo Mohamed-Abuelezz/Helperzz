@@ -6,6 +6,11 @@
     <!-- Required meta tags -->
 
     @include('Website.globalElements.meta')
+    <title>
+        {{ Config::get('app.locale') == 'en'? 'Register now to use all the features in Helperzz.': 'سجل الان لاستخدام جميع الميزات في Helperzz.' }}
+    </title>
+    <meta name="description"
+        content="{{ Config::get('app.locale') == 'en'? 'Register now. You can search for service providers. If you are a professional or service provider, you can register as a service provider also for free.': 'سجل الان تستطيع البحث عن مقدمي الخدمات واذا كنت صاحب مهنة او مقدم خدمات يمكنك التسجيل كمقدم خدمة ايضا مجانا.'}}">
 
 
 
@@ -47,11 +52,10 @@
 
 
     <!------------------------------------- Auth Section-->
-
-
+<main>
     <section style="height: 100vh;">
 
-        <div class="auth container-lg shadow" >
+        <div class="auth container-lg " >
 
             <div class="taps " >
 
@@ -99,7 +103,7 @@
                                 <label for="emailFormControlInputLogin" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}</label>
                                 <input type="email"
-                                    class="form-control shadow custome-textFiled  @error('email', 'login') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('email', 'login') is-invalid @enderror"
                                     style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
                                     id="emailFormControlInputLogin" name="email" value="{{ old('email') }}"
                                     placeholder=" {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}">
@@ -116,7 +120,7 @@
                                 <label for="passworddFormControlInputLogin" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'الرقم السري' : 'Password' }}</label>
                                 <input type="password"
-                                    class="form-control shadow custome-textFiled   @error('password', 'login') is-invalid @enderror"
+                                    class="form-control  custome-textFiled   @error('password', 'login') is-invalid @enderror"
                                     id="passworddFormControlInputLogin" placeholder="pas/#****" name="password">
 
 
@@ -161,11 +165,11 @@
                         <div class="fields">
 
                             <div class="">
-                                <input type="hidden" class="form-control shadow custome-textFiled"
+                                <input type="hidden" class="form-control  custome-textFiled"
                                     id="typeFormControlInputType" placeholder="John Doe" value='user' name='type'>
                             </div>
                             <div class="">
-                                <input type="hidden" class="form-control shadow custome-textFiled"
+                                <input type="hidden" class="form-control  custome-textFiled"
                                     id="nameFormControlInputCountryUser" placeholder="John Doe" value='{{ $countrey->id }}'
                                     name='country'>
                             </div>
@@ -198,7 +202,7 @@
                                 <label for="nameFormControlInputNameUser" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'اسم المستخدم' : 'Username' }}</label>
                                 <input type="text"
-                                    class="form-control shadow custome-textFiled @error('name', 'user') is-invalid @enderror"
+                                    class="form-control  custome-textFiled @error('name', 'user') is-invalid @enderror"
                                     id="nameFormControlInputNameUser " placeholder="John Doe" value="{{ old('name') }}"
                                     name="name">
                                 @error('name', 'user')
@@ -215,7 +219,7 @@
                                 <label for="emailFormControlInputUser" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}</label>
                                 <input type="email"
-                                    class="form-control shadow custome-textFiled  @error('email', 'user') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('email', 'user') is-invalid @enderror"
                                     style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
                                     id="emailFormControlInputUser" name="email" value="{{ old('email') }}"
                                     placeholder=" {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}">
@@ -235,7 +239,7 @@
                                     {{ Config::get('app.locale') == 'ar' ? 'رقم الهاتف' : 'Phone' }}</label>
                                 <input type="number"
                                     style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
-                                    class="form-control shadow custome-textFiled  @error('phone', 'user') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('phone', 'user') is-invalid @enderror"
                                     id="phoneFormControlInput" placeholder="+2010569....." name="phone"
                                     value="{{ old('phone') }}">
                                 <div id="emailHelp" class="form-text" style="font-size: 12px">
@@ -255,7 +259,7 @@
                                 <label for="passworddFormControlInputUser" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'الرقم السري' : 'Password' }}</label>
                                 <input type="password"
-                                    class="form-control shadow custome-textFiled   @error('password', 'user') is-invalid @enderror"
+                                    class="form-control  custome-textFiled   @error('password', 'user') is-invalid @enderror"
                                     id="passworddFormControlInputUser" placeholder="pas/#****" name="password">
 
 
@@ -316,7 +320,7 @@
 
                                                 @foreach ($countrey->states as $state)
                                                     <option value="{{ $state->id }}"
-                                                        {{ old('state') == $state->id ? 'selected' : '' }}>
+                                                        {{ old('state') != null && old('state') == $state->id ? 'selected' : '' }}>
                                                         {{ $state->name }}</option>
                                                 @endforeach
 
@@ -335,22 +339,29 @@
 
                                     </div>
                                 </div>
-                                <div class="col-lg">
+
+                                <div class="col-lg  cities " style="display: {{ old('state') != null && \App\Models\State::where('id',old('state'))->with(['cities'])->first()->cities->isEmpty() == false ? 'block' : 'none'}}  " >
                                     <div class="item">
 
                                         <label for="id_label_single">
                                             <label
-                                                for="floatingSelectGridCity">{{ Config::get('app.locale') == 'ar' ? 'المدينة' : 'City' }}</label>
+                                                for="floatingSelectGridCity">{{ Config::get('app.locale') == 'ar' ? 'المدينة [اختياري]' : 'City ​​[optional] ' }}</label>
                                         </label>
                                         <div class="loadDiv" id="myLoadingCity">
-
                                             <select
                                                 class="select-itemCity   @error('city', 'user') is-invalid @enderror"
-                                                name="city" id="cities" value="{{ old('city') }}">
+                                                name="city" id="cities">
 
-                                                {{-- @foreach ($countries->first()->states->first()->cities as $city)
-                                                    <option value="{{ $city->id }}" selected="{{old('city') == $city->id ?  'selected' : ''}}">{{ $city->name }}</option>
-                                                @endforeach --}}
+@if (old('state') != null )
+<option value=""></option>
+
+@foreach (\App\Models\State::where('id',old('state'))->with(['cities'])->first()->cities as $city)
+    <option value="{{ $city->id }}" {{old('city') != null && old('city') == $city->id ?  'selected' : ''}}>{{ $city->name }}</option>
+
+    @endforeach
+
+@endif
+
 
 
                                             </select>
@@ -401,7 +412,7 @@
                                 <label class="form-check-label  @error('terms', 'user') is-invalid @enderror"
                                     for="flexCheckCheckedTermsUser">
                                     {{ Config::get('app.locale') == 'ar' ? 'اوافق' : 'Agree' }} <a
-                                        href="{{ route('terms') }}">
+                                        href="{{ route('terms') }}" style="color: var(--primary)">
 
                                         {{ Config::get('app.locale') == 'ar' ? 'الشروط والاحكام' : 'Terms And Conditions' }}
                                     </a>
@@ -435,11 +446,11 @@
                         <div class="fields">
 
                             <div class="">
-                                <input type="hidden" class="form-control shadow custome-textFiled"
+                                <input type="hidden" class="form-control  custome-textFiled"
                                     id="nameFormControlInputTypeProvider" placeholder="John Doe" value='provider' name='type'>
                             </div>
                             <div class="">
-                                <input type="hidden" class="form-control shadow custome-textFiled"
+                                <input type="hidden" class="form-control  custome-textFiled"
                                     id="nameFormControlInputCountryProvider" placeholder="John Doe" value='{{ $countrey->id }}'
                                     name='country'>
                             </div>
@@ -480,7 +491,7 @@
                                 <label for="nameFormControlInputNameProvider" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'اسم المستخدم' : 'Username' }}</label>
                                 <input type="text"
-                                    class="form-control shadow custome-textFiled  @error('name', 'provider') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('name', 'provider') is-invalid @enderror"
                                     id="nameFormControlInputNameProvider" name="name" placeholder="John Doe">
                                 @error('name', 'provider')
                                     <div class="invalid-feedback">
@@ -496,7 +507,7 @@
                                 <label for="emailFormControlInputProvider" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}</label>
                                 <input type="email"
-                                    class="form-control shadow custome-textFiled   @error('email', 'provider') is-invalid @enderror"
+                                    class="form-control  custome-textFiled   @error('email', 'provider') is-invalid @enderror"
                                     style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
                                     name="email"
                                     id="emailFormControlInputProvider"
@@ -513,7 +524,7 @@
                                     {{ Config::get('app.locale') == 'ar' ? 'رقم الهاتف' : 'Phone' }}</label>
                                 <input type="number"
                                     style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
-                                    class="form-control shadow custome-textFiled @error('phone', 'provider') is-invalid @enderror"
+                                    class="form-control  custome-textFiled @error('phone', 'provider') is-invalid @enderror"
                                     name="phone"
 
                                     id="phoneFormControlInputProvider" placeholder="+2010569.....">
@@ -529,7 +540,7 @@
                                 <label for="passworddFormControlInputProvider" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'الرقم السري' : 'Password' }}</label>
                                 <input type="password"
-                                    class="form-control shadow custome-textFiled  @error('password', 'provider') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('password', 'provider') is-invalid @enderror"
                                     name="password"
 
                                     id="passworddFormControlInputProvider" placeholder="pas/#****">
@@ -546,7 +557,7 @@
                                 <label for="addressesFormControlInputProvider" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'العنوان [اختياري]' : 'Addresses [Optional]' }}</label>
                                 <input type="text"
-                                    class="form-control shadow custome-textFiled  @error('address', 'provider') is-invalid @enderror"
+                                    class="form-control  custome-textFiled  @error('address', 'provider') is-invalid @enderror"
                                     name="address"
                                     id="addressesFormControlInputProvider"  placeholder="1 your location street " />
                                 @error('address', 'provider')
@@ -561,7 +572,7 @@
                             <div class="">
                                 <label for="BioFormControlTextarea" class="form-label">
                                     {{ Config::get('app.locale') == 'ar' ? 'نبذه مختصره' : 'Bio' }} </label>
-                                <textarea class="form-control shadow textarea custome-textFiled  @error('bio', 'provider') is-invalid @enderror"
+                                <textarea class="form-control  textarea custome-textFiled  @error('bio', 'provider') is-invalid @enderror"
                                 name="bio"
                                   
                                 id="BioFormControlTextarea" rows="3" maxlength="500"></textarea>
@@ -581,7 +592,7 @@
                                 <label for="IDformFile"
                                     class="form-label ">{{ Config::get('app.locale') == 'ar' ? 'صورة للبطاقه الشخصية' : 'Your ID Card Image' }}</label>
                                
-                                <input class="form-control shadow custome-textFiled @error('idCard', 'provider') is-invalid @enderror"  name="idCard"  type="file" id="IDformFile">
+                                <input class="form-control  custome-textFiled @error('idCard', 'provider') is-invalid @enderror"  name="idCard"  type="file" id="IDformFile">
                                 @error('idCard', 'provider')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -726,12 +737,12 @@
                                                 class="select-itemState2   @error('state', 'provider') is-invalid @enderror"
                                                 name="state" id="state2">
                                                 <option value=""></option>
-
                                                 @foreach ($countrey->states as $state)
                                                     <option value="{{ $state->id }}"
-                                                        {{ old('state') == $state->id ? 'selected' : '' }}>
+                                                        {{ old('state') != null && old('state') == $state->id ? 'selected' : '' }}>
                                                         {{ $state->name }}</option>
                                                 @endforeach
+
 
 
                                             </select>
@@ -748,7 +759,7 @@
 
                                     </div>
                                 </div>
-                                <div class="col-lg">
+                                <div class="col-lg  cities2"  style="display: none">
                                     <div class="item">
 
                                         <label for="id_label_single">
@@ -761,9 +772,15 @@
                                                 class="select-itemCity2   @error('city', 'provider') is-invalid @enderror"
                                                 name="city" id="cities2" value="{{ old('city') }}">
 
-                                                {{-- @foreach ($countries->first()->states->first()->cities as $city)
-                                                <option value="{{ $city->id }}" selected="{{old('city') == $city->id ?  'selected' : ''}}">{{ $city->name }}</option>
-                                            @endforeach --}}
+                                                @if (old('state') != null )
+<option value=""></option>
+
+@foreach (\App\Models\State::where('id',old('state'))->with(['cities'])->first()->cities as $city)
+    <option value="{{ $city->id }}" {{old('city') != null && old('city') == $city->id ?  'selected' : ''}}>{{ $city->name }}</option>
+
+    @endforeach
+
+@endif
 
 
                                             </select>
@@ -813,7 +830,7 @@
                                 <label class="form-check-label  @error('terms', 'user') is-invalid @enderror"
                                     for="flexCheckCheckedTermsProvider">
                                     {{ Config::get('app.locale') == 'ar' ? 'اوافق' : 'Agree' }} <a
-                                        href="{{ route('terms') }}">
+                                        href="{{ route('terms') }}" style="color: var(--primary)">
 
                                         {{ Config::get('app.locale') == 'ar' ? 'الشروط والاحكام' : 'Terms And Conditions' }}
                                     </a>
@@ -846,6 +863,7 @@
     </section>
 
 
+</main>
 
 
     <br>

@@ -19,9 +19,13 @@ position: relative;
 /* .auth::-webkit-scrollbar { 
   display: none; 
 } 
+
 */
 .auth:hover{
 cursor: s-resize;
+box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+transition: box-shadow 1s;
+
 }
 
 .auth .taps ul{

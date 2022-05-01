@@ -77,11 +77,16 @@ function topFunction() {
 
 $(window).on('load', function(){ 
 
-  setTimeout(function() {
+ // setTimeout(function() {
 
-    $(".bg_load").fadeOut("slow");
+    //$(".bg_load").hide("slow");
+    $(".bg_load").animate({
+      'opacity': 0
+  }, 2000, function()  {
+    $(".bg_load").hide();
+  });
 
-  }, 2000);
+  //}, 1000);
   
 
 });
@@ -255,10 +260,19 @@ function getCountriesOrStatesOrCountries({url,parentId, elementId,loadingElement
      }
 
      if ( response['data'].length != 0) {
-       
+      $('.'+elementId).show();
+
+      selectElement.add(new Option());
+
       response['data'].forEach((item, i) => {
-        selectElement.add(new Option(item['name'],item['id'],( i == 0 ? true : false)));
+  //      selectElement.add(new Option(item['name'],item['id'],( i == 0 ? true : false)));
+
+        selectElement.add(new Option(item['name'],item['id']));
       });
+
+     }else{
+      $('.'+elementId).hide();
+
      }
 
 

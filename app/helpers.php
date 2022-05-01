@@ -45,7 +45,7 @@ Storage::disk('public')->delete($path);
 function getMyLocationDetails(){
 // $_SERVER['REMOTE_ADDR']
 
-    $json = file_get_contents("http://ipinfo.io/".$_SERVER['REMOTE_ADDR']);
+    $json = file_get_contents("http://ipinfo.io/102.43.228.52");
     $details = json_decode($json);
 
     return  $details;
