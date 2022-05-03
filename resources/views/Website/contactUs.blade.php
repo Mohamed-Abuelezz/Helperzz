@@ -5,7 +5,13 @@
 <head>
     <!-- Required meta tags -->
     @include('Website.globalElements.meta')
+    <title>
+        {{ Config::get('app.locale') == 'en'? 'تواصل مع ادارة موقع  '.\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name : 'Contact the  '.\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name .' site administration' }}
+    </title>
+    <meta name="description"
+        content="{{ Config::get('app.locale') == 'en'? 'Contact us if you have any problem, inquiry or suggestion at any time throughout the week 24/24.': 'تواصل معنا اذا كان لديك اي مشكلة او استفسار او اقتراح في اي وقت طوال ايام الاسبوع طوال اليوم 24/24.' }}">
 
+        <meta name="googlebot" content="index,follow">
 
 
     <!--  JS  ------------------------------------------------------------------------------>
@@ -58,27 +64,19 @@
     <br>
     <br>
     <br>
+
+    <main>
     <div class="container">
 
 
-        <div class="row">
+        <div class="row order-last justify-content-between g-5">
 
 
 
-            <div class="contctInformations  col-sm-12 col-xl-6 ">
-
-                <h6> {{Config::get('app.locale') == 'ar' ? 'رقم الهاتف' : 'Phone'}}</h6>
-                <p>+201063898262</p>
-                <hr>
-                <h6> {{Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email'}}</h6>
-                <p>helperzz@helperzz.com</p>
-                <hr>
-                <h6>{{Config::get('app.locale') == 'ar' ? 'العنوان' : 'Location'}}</h6>
-                <p>Cairo/Giza</p>
-            </div>
 
 
-            <div class="fields col-sm-12 col-xl-6 container d-flex flex-column justify-content-center flex-wrap ">
+
+            <div class="fields col-sm-12 col-xl-6 container d-flex flex-column justify-content-center flex-wrap border p-4">
                 <form method="POST" action="{{ route('contactUs.send') }}" enctype="multipart/form-data">
 
                     @csrf
@@ -87,7 +85,7 @@
                         <label for="nameFormControlInput" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'اسم المستخدم' : 'Username' }}</label>
                         <input type="text"
-                            class="form-control shadow custome-textFiled @error('name') is-invalid @enderror"
+                            class="form-control  custome-textFiled @error('name') is-invalid @enderror"
                             id="nameFormControlInput " placeholder="medo" value="{{ old('name') }}" name="name">
                         @error('name')
                             <div class="invalid-feedback">
@@ -103,7 +101,7 @@
                         <label for="emailFormControlInputUser" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}</label>
                         <input type="email"
-                            class="form-control shadow custome-textFiled  @error('email') is-invalid @enderror"
+                            class="form-control  custome-textFiled  @error('email') is-invalid @enderror"
                             style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
                             id="emailFormControlInputUser" name="email" value="{{ old('email') }}"
                             placeholder=" {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}">
@@ -121,8 +119,11 @@
                     <div class="">
                         <label for="exampleFormControlTextarea1 " class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'الرسالة' : 'Message' }}</label>
-                        <textarea class="form-control shadow-none textarea custome-textFiled   @error('message') is-invalid @enderror"
-                            id="exampleFormControlTextarea1" rows="4" maxlength="500" name="message"></textarea>
+                        <textarea class="form-control  textarea custome-textFiled   @error('message') is-invalid @enderror"
+                            id="exampleFormControlTextarea1" rows="4" maxlength="500" name="message">
+                            {{ old('message') }}
+                        
+                        </textarea>
                         <div id="the-count">
                             <span id="current">0</span>
                             <span id="maximum">/ 500</span>
@@ -138,7 +139,7 @@
                     <div class="">
                         <label for="formFile" class="form-label ">
                             {{ Config::get('app.locale') == 'ar' ? 'ارفاق ملف [اختياري]' : 'attach file [optional] ' }}</label>
-                        <input class="form-control shadow-none custome-textFiled" type="file" name="image"
+                        <input class="form-control  custome-textFiled" type="file" name="image"
                             id="formFile">
                     </div>
                     <br>
@@ -150,10 +151,23 @@
                 </form>
             </div>
 
+            <div class="contctInformations  col-sm-12 col-xl-4 border p-4">
 
+                <h6> {{Config::get('app.locale') == 'ar' ? 'رقم الهاتف' : 'Phone'}}</h6>
+                <p>+201063898262</p>
+                <hr style="width: 60%">
+                <h6> {{Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email'}}</h6>
+                <p>contact@helperzz.com</p>
+                <hr style="width: 60%">
+                <h6>{{Config::get('app.locale') == 'ar' ? 'العنوان' : 'Location'}}</h6>
+                <p>Cairo/Giza</p>
+                <hr>
+                <h6><a href="https://www.facebook.com/Helperzz2022" target="_blank" style="color: black;font-size: 15px;text-decoration: none"><img src=" {{asset('Website_Assets/assets/icons/facebook-png-icon-12.jpg')}}" style="width: 35px;height: 35px;border-radius: 50%" alt="facebook icons" > {{ \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name }}</a></h6>
+            </div>
 
         </div>
     </div>
+</main>
 
 
 

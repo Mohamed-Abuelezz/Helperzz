@@ -1,7 +1,10 @@
 <style>
 
     /******************* Footer Section */
-
+.fa-facebook-square{
+  font-family: "Font Awesome 5 Brands"  !important;
+  color: white
+}
 footer{
     background-color: var(--primary);
   
@@ -11,7 +14,7 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height:40vh;
+    height:35vh;
   }
   footer ul{
     list-style-type: none;
@@ -66,13 +69,14 @@ footer{
   #top {
     display: none; 
     position: fixed; 
-    bottom: 50px; 
-    right: 30px; 
+    bottom: 20px; 
+    left: 30px; 
+    right: unset;
     z-index: 99; 
     border: none; 
     outline: none; 
-    background-color: var(--buttons);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: white;
     cursor: pointer; 
     padding: 15px;
     border-radius: 15px;
@@ -80,9 +84,9 @@ footer{
   }
   
   #top:hover {
-    background-color: var(--primary);
-    color: white;
-    box-shadow: 5px 5px 10px;
+    cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .40);
+  transition: box-shadow 1s;
   }
   
   
@@ -98,6 +102,16 @@ footer{
         <ul>
           <li> <a href="{{route('terms')}}"> {{Config::get('app.locale') == 'ar' ?  'الشروط والاحكام' :  'Terms And Conditions'}}</a></li>
           <li> <a href="{{route('contactUs')}}"> {{Config::get('app.locale') == 'ar' ?  'تواصل معنا' :  'Contact Us'}}</a></li>
+          <hr style="margin: 5px">
+          <li style="margin: 0px">   
+           <a href="https://www.facebook.com/Helperzz2022" target="_blank" style="color: whitesmoke;font-size: 30px;text-decoration: none">
+            <i class="fab fa-facebook-square"></i>            
+          </a>
+          
+          <a href="mailto:contact@helperzz.com" target="_blank" style="color: whitesmoke;font-size:30px;text-decoration: none">
+            <i class="fas fa-envelope"></i>
+                    </a>      
+          </li>
   </ul>
 
 

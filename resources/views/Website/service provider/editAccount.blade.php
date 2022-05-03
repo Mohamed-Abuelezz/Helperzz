@@ -6,6 +6,14 @@
     <!-- Required meta tags -->
 
     @include('Website.globalElements.meta')
+    <title>
+        {{ Config::get('app.locale') == 'en' ?  'Edit Account' : 'تعديل الحساب ' }}
+    </title>
+    {{-- <meta name="description"
+        content="{{ Config::get('app.locale') == 'en'? 'You can see the providers and professions you need, search for them and see their reviews.':
+         'يمكنك رؤية مقدمي الخدمات واصحاب المهن الذين تحتاجهم والبحث عنهم ورئية تقييماتهم .' }}"> --}}
+
+    <meta name='robots' content="noindex,nofollow">
 
 
 
@@ -64,8 +72,8 @@
 
 
                     <div class="">
-                        <input type="hidden" class="form-control shadow custome-textFiled"
-                            id="nameFormControlInputCountryProvider" placeholder="medo" value='{{ $countrey->id }}'
+                        <input type="hidden" class="form-control  custome-textFiled"
+                            id="nameFormControlInputCountryProvider" value='{{ $countrey->id }}'
                             name='country'>
                     </div>
                     <div class="container">
@@ -105,9 +113,9 @@
                         <label for="nameFormControlInputNameProvider" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'اسم المستخدم' : 'Username' }}</label>
                         <input type="text"
-                            class="form-control shadow custome-textFiled  @error('name', 'provider') is-invalid @enderror"
-                            id="nameFormControlInputNameProvider" name="name" placeholder="medo"
-                            value="{{ auth()->guard('provider')->user()->name }}">
+                            class="form-control  custome-textFiled  @error('name', 'provider') is-invalid @enderror"
+                            id="nameFormControlInputNameProvider" name="name" placeholder="ohn Doe" 
+                            value="{{ old('name') != null ? old('name') : auth()->guard('provider')->user()->name }}">
                         @error('name', 'provider')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -122,10 +130,10 @@
                         <label for="emailFormControlInputProvider" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}</label>
                         <input type="email"
-                            class="form-control shadow custome-textFiled   @error('email', 'provider') is-invalid @enderror"
+                            class="form-control  custome-textFiled   @error('email', 'provider') is-invalid @enderror"
                             style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
                             name="email" id="emailFormControlInputProvider"
-                            value="{{ auth()->guard('provider')->user()->email }}"
+                            value="{{old('email') != null ? old('email') : auth()->guard('provider')->user()->email }}"
                             placeholder=" {{ Config::get('app.locale') == 'ar' ? 'البريد الاليكتروني' : 'Email address' }}">
                         @error('email', 'provider')
                             <div class="invalid-feedback">
@@ -139,8 +147,8 @@
                             {{ Config::get('app.locale') == 'ar' ? 'رقم الهاتف' : 'Phone' }}</label>
                         <input type="number"
                             style="text-align: {{ Config::get('app.locale') == 'ar' ? 'right' : 'left' }}"
-                            class="form-control shadow custome-textFiled @error('phone', 'provider') is-invalid @enderror"
-                            name="phone" value="{{ auth()->guard('provider')->user()->phone }}"
+                            class="form-control  custome-textFiled @error('phone', 'provider') is-invalid @enderror"
+                            name="phone" value="{{ old('phone') != null ? old('phone') : auth()->guard('provider')->user()->phone }}"
                             id="phoneFormControlInputProvider" placeholder="+2010569.....">
                         @error('phone', 'provider')
                             <div class="invalid-feedback">
@@ -154,7 +162,7 @@
                         <label for="passworddFormControlInputProvider" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'الرقم السري' : 'Password' }}</label>
                         <input type="password"
-                            class="form-control shadow custome-textFiled  @error('password', 'provider') is-invalid @enderror"
+                            class="form-control  custome-textFiled  @error('password', 'provider') is-invalid @enderror"
                             name="password"
 
                             id="passworddFormControlInputProvider" placeholder="pas/#****">
@@ -171,7 +179,7 @@
                         <label for="addressesFormControlInputProvider" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'العنوان [اختياري]' : 'Addresses [Optional]' }}</label>
                         <input type="text"
-                            class="form-control shadow custome-textFiled  @error('address', 'provider') is-invalid @enderror"
+                            class="form-control  custome-textFiled  @error('address', 'provider') is-invalid @enderror"
                             name="address"
                             id="addressesFormControlInputProvider"  placeholder="1 your location street " />
                         @error('address', 'provider')
@@ -186,9 +194,9 @@
                     <div class="">
                         <label for="BioFormControlTextarea" class="form-label">
                             {{ Config::get('app.locale') == 'ar' ? 'نبذه مختصره' : 'Bio' }} </label>
-                        <textarea class="form-control shadow textarea custome-textFiled  @error('bio', 'provider') is-invalid @enderror" name="bio"
+                        <textarea class="form-control  textarea custome-textFiled  @error('bio', 'provider') is-invalid @enderror" name="bio"
                             id="BioFormControlTextarea" rows="3" maxlength="500">
-                       {{ auth()->guard('provider')->user()->bio }}
+                       {{ old('bio') != null ? old('bio') : auth()->guard('provider')->user()->bio }}
                     
                     
                     </textarea>
@@ -208,7 +216,7 @@
                         <label for="IDformFile"
                             class="form-label ">{{ Config::get('app.locale') == 'ar' ? 'صورة للبطاقه الشخصية' : 'Your ID Card Image' }}</label>
                        
-                        <input class="form-control shadow custome-textFiled @error('idCard', 'provider') is-invalid @enderror"  name="idCard"  type="file" id="IDformFile">
+                        <input class="form-control  custome-textFiled @error('idCard', 'provider') is-invalid @enderror"  name="idCard"  type="file" id="IDformFile">
                         @error('idCard', 'provider')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -272,14 +280,26 @@
                                         name="specialization" id="Specialization">
                                         <option value=""></option>
 
+                                        @if (old('service_department') != null)
+                                        <option value=""></option>
 
-                                        @foreach (auth()->guard('provider')->user()->serviceCatogrey->specializations
-    as $specialization)
+                                        @foreach (\App\Models\Specialization::where('serviceCatogrey_id', old('service_department'))->get() as $specialization)
+                                            <option value="{{ $specialization->id }}"
+                                                {{ old('specialization') != null && old('specialization') == $specialization->id ? 'selected' : '' }}>
+                                                {{ Config::get('app.locale') == 'ar' ? $specialization->name_ar : $specialization->name_en }}
+                                            </option>
+                                        @endforeach
+
+                                        @else
+                                        
+
+                                        @foreach (auth()->guard('provider')->user()->serviceCatogrey->specializations as $specialization)
                                             <option value="{{ $specialization->id }}"
                                                 {{ old('service_department') == $specialization->id ||auth()->guard('provider')->user()->specialization_id == $specialization->id? 'selected': '' }}>
                                                 {{ Config::get('app.locale') == 'ar' ? $specialization->name_ar : $specialization->name_en }}
                                             </option>
                                         @endforeach
+                                        @endif
 
                                     </select>
                                     @error('specialization', 'provider')
@@ -300,7 +320,7 @@
                     </div>
 
 
-                    <div class=" ">
+                    <div class=" moreServices">
                         <label for="id_label_multiple">
                             {{ Config::get('app.locale') == 'ar' ? ' المزيد [اختياري]' : 'More [Optional]' }}
 
@@ -311,6 +331,18 @@
                                 id="moreServices" name="more[]" style="width: 100%">
 
 
+                                @if (old('specialization') != null)
+                                <option value=""></option>
+
+                                @foreach (\App\Models\MoreService::where('specialization_id', old('specialization'))->get() as $moreService)
+                                    <option value="{{ $moreService->id }}"
+                                        {{ Session::getOldInput('more') != null && in_array($moreService->id, Session::getOldInput('more'))? 'selected': '' }}>
+                                        {{ Config::get('app.locale') == 'ar' ? $moreService->name_ar : $moreService->name_en }}
+                                    </option>
+                                @endforeach
+
+                                @else
+
                                 @foreach (auth()->guard('provider')->user()->specialization->moreServices as $moreService)
                                     <option value="{{ $moreService->id }}"
                                         {{ in_array($moreService->id,auth()->guard('provider')->user()->moreservicesofserviceproviders->pluck('moreService_id')->toArray())? 'selected': '' }}>
@@ -319,6 +351,7 @@
                                     </option>
                                 @endforeach
 
+                                @endif
 
 
                             </select>
@@ -344,7 +377,7 @@
 
                     </div>
 
-                    <div class="row g-1 shadow">
+                    <div class="d-flex flex-column">
                         {{-- <div class="col-lg">
                         <div class="item">
 
@@ -379,9 +412,20 @@
                                         <option value=""></option>
 
                                         @foreach ($countrey->states as $state)
-                                            <option value="{{ $state->id }}"
-                                                {{ old('state') == $state->id ||auth()->guard('provider')->user()->state_id == $state->id? 'selected': '' }}>
-                                                {{ $state->name }}</option>
+
+                                        @if (old('state') != null)
+                                            
+                                        <option value="{{ $state->id }}"
+                                            {{ (int)old('state') == $state->id  ? 'selected'  :   ''   }}>
+                                            {{ $state->name }}</option>
+
+                                        @else
+                                      
+                                        <option value="{{ $state->id }}"
+                                            {{  auth()->guard('provider')->user()->state_id == $state->id   ? 'selected'  :   ''   }}>
+                                            {{ $state->name }}</option>
+
+                                        @endif
                                         @endforeach
 
 
@@ -399,7 +443,8 @@
 
                             </div>
                         </div>
-                        <div class="col-lg">
+                        @if (old('state') != null)
+                        <div class="col-lg cities2"  style="display: {{ old('state') != null && \App\Models\State::where('id', old('state'))->with(['cities'])->first()->cities->isEmpty() == false  ? 'block':  'none' }}  ">
                             <div class="item">
 
                                 <label for="id_label_single">
@@ -414,6 +459,53 @@
                                         {{-- @foreach ($countries->first()->states->first()->cities as $city)
                                         <option value="{{ $city->id }}" selected="{{old('city') == $city->id ?  'selected' : ''}}">{{ $city->name }}</option>
                                     @endforeach --}}
+
+                                    <option value=""></option>
+
+                                    @foreach (\App\Models\State::where('id', old('state'))->with(['cities'])->first()->cities as $city)
+                                        <option value="{{ $city->id }}"
+                                            {{ old('city') != null && old('city') == $city->id ? 'selected' : '' }}>
+                                            {{ $city->name }}</option>
+                                    @endforeach
+
+
+
+
+                                    </select>
+
+                                    @error('city', 'provider')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                        @else
+                        
+                        <div class="col-lg cities2"  style="display: {{\App\Models\State::where('id', auth()->guard('provider')->user()->state_id)->with(['cities'])->first()->cities->isEmpty() == false  ? 'block':  'none' }}  ">
+                            <div class="item">
+
+                                <label for="id_label_single">
+                                    <label
+                                        for="floatingSelectGridCity">{{ Config::get('app.locale') == 'ar' ? 'المدينة' : 'City' }}</label>
+                                </label>
+                                <div class="loadDiv" id="myLoadingCity2">
+
+                                    <select class="select-itemCity2   @error('city', 'provider') is-invalid @enderror"
+                                        name="city" id="cities2" value="{{ old('city') }}">
+
+                                        {{-- @foreach ($countries->first()->states->first()->cities as $city)
+                                        <option value="{{ $city->id }}" selected="{{old('city') == $city->id ?  'selected' : ''}}">{{ $city->name }}</option>
+                                    @endforeach --}}
+
+                                    <option value=""></option>
+
+
 
                                         @foreach (auth()->guard('provider')->user()->state->cities as $city)
                                             <option value="{{ $city->id }}"
@@ -434,7 +526,11 @@
                                 </div>
 
                             </div>
-                        </div>
+                        </div>  
+
+
+
+                        @endif
 
                     </div>
 
@@ -445,7 +541,7 @@
                             <div class="form-check ">
                                 <input class="form-check-input custome-CheckBox" type="radio" name="gender"
                                     id="gridRadiosGenderProvider" value="1"
-                                    {{  (int)auth()->guard('provider')->user()->gender == 1 ? 'checked' : '' }}>
+                                    {{  (old('gender') != null && old('gender') == 1) || (int)auth()->guard('provider')->user()->gender == 1 ? 'checked' : '' }}>
                                 <label class="form-check-label" for="gridRadiosGenderProvider">
                                     {{ Config::get('app.locale') == 'ar' ? 'ذكر' : 'Male' }}
                                 </label>
@@ -453,7 +549,7 @@
                             <div class="form-check">
                                 <input class="form-check-input custome-CheckBox" type="radio" name="gender"
                                     id="gridRadiosGenderProvider2" value="0"
-                                    {{  (int)auth()->guard('provider')->user()->gender == 0 ? 'checked' : '' }}>
+                                    {{   (old('gender') != null && old('gender') == 0)  ||  (int)auth()->guard('provider')->user()->gender == 0 ? 'checked' : '' }}>
                                 <label class="form-check-label" for="gridRadiosGenderProvider2">
                                     {{ Config::get('app.locale') == 'ar' ? 'انثي' : 'Female' }}
 
@@ -509,6 +605,9 @@
 
         // var userId = {!! json_encode(auth()->guard('provider')->user()->id) !!};
         var profile_id = {!! json_encode(Auth::guard('provider')->user()->id) !!};
+
+        var oldLat = {!! json_encode(old('lat')) !!};
+        var oldLng = {!! json_encode(old('lng')) !!};
 
     </script>
 

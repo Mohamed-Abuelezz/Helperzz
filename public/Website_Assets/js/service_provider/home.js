@@ -113,16 +113,49 @@ var id = $(this).attr("data-id");
 
   $('#reservationModalTitle').append( lang == 'ar' ?  `تفاصيل الحجز  #${$(this).attr("data-id")}` :   `Reservation Details  #${$(this).attr("data-id")}`);
   $('#reservationModalbody').append(`
-  <h6 style="color:var(--primary)">${lang == 'ar' ? 'الاسم' : 'name'}</h6>
+
+  <h6 style="color:var(--primary);font-size:20px;text-align:auto">${lang == 'ar' ? 'رقم المستخدم التعريفي' : 'User Id'}</h6>
+  <p style="color:black;font-weight:bold;font-size:15px">${reserv['user']['id']}</p>
+  <br/>
+  <hr style="width:80%;margin:auto"/>
+  <br/>
+
+  <h6 style="color:var(--primary);font-size:20px;text-align:auto">${lang == 'ar' ? 'الاسم' : 'Name'}</h6>
   <p style="color:black;font-weight:bold;font-size:15px">${reserv['user']['name']}</p>
-  <hr/>
-  <h6 style="color:var(--primary)"> ${lang == 'ar' ? 'رقم الهاتف ' : 'Phone'}</h6>
-  <p style="color:black;font-weight:bold;font-size:15px">${reserv['user']['phone']}</p>
-  <hr/>
-  <h6 style="color:var(--primary)">${lang == 'ar' ?'الموقع' :  'Location'}</h6>
+
+  <br/>
+  <hr style="width:80%;margin:auto"/>
+  <br/>
+
+  <h6 style="color:var(--primary);font-size:20px;text-align:auto">${lang == 'ar' ? 'البريد الاليكنروني' : 'Email'}</h6>
+
+   <a href="mailto:${reserv['user']['email']}?subject=${
+     lang == 'ar' ?
+    `السلام عليكم . اتحدث معك بخصوص الحجز رقم ${reserv['id']} المرسل عن طريق Helperzz الي مقدم الخدمة  ${reserv['provider']['name']} `
+     :  
+   `Hello . I am talking to your reservation number ${reserv['id']} sent via Helperzz to the service provider   ${reserv['provider']['name']} ` }" target="_blank"> <p style="color:black;font-weight:bold;font-size:15px"> ${reserv['user']['email']} </p>
+   </a>
+
+  <br/>
+  <hr style="width:80%;margin:auto"/>
+  <br/>
+
+  <h6 style="color:var(--primary);font-size:20px"> ${lang == 'ar' ? 'رقم الهاتف ' : 'Phone'}</h6>
+ <a  href="//api.whatsapp.com/send?phone=${reserv['user']['phone']}&text=${lang == 'ar' ? `السلام عليكم . اتحدث معك بخصوص الحجز رقم ${reserv['id']} المرسل عن طريق Helperzz الي مقدم الخدمة ${reserv['provider']['name']} `
+  :  `Hello . I am talking to your reservation number ${reserv['id']} sent via Helperzz to the service provider ${reserv['provider']['name']}`}" target="_blank"  > <p style="color:black;font-weight:bold;font-size:15px">${reserv['user']['phone']}</p> </a>
+  
+  <br/>
+  <hr style="width:80%;margin:auto"/>
+  <br/>
+
+  <h6 style="color:var(--primary);font-size:20px">${lang == 'ar' ?'الموقع' :  'Location'}</h6>
   <p style="color:black;font-weight:bold;font-size:15px">${reserv['user']['country']['name']}/${reserv['user']['state']['name']}/${reserv['user']['city']['name']}</p>
-  <hr/>
-  <h6 style="color:var(--primary)"> ${lang == 'ar' ? 'التفاصيل' :  'Details'}</h6>
+  
+  <br/>
+  <hr style="width:80%;margin:auto"/>
+  <br/>
+
+  <h6 style="color:var(--primary);font-size:20px"> ${lang == 'ar' ? 'تفاصيل الحجز' :  'Details'}</h6>
   <p style="color:black;font-weight:bold;font-size:15px">
   ${reserv['describe']}
   </p>

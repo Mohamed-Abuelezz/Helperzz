@@ -160,6 +160,8 @@ border: none;
 .button_1_style:hover{
   color: white;
   cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s;
 
 }
 
@@ -168,7 +170,7 @@ border: none;
   text-align: center;
   margin: auto;
   border-radius: 5px;
-  color: black;
+  color: white;
   border: none;
 
   font-size: 21px;
@@ -179,6 +181,8 @@ background-color: var(--buttons);
 .button_2_style:hover{
 color: var(--primary);
 cursor: pointer;
+box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+transition: box-shadow 1s;
 
 }
 
@@ -339,7 +343,7 @@ justify-content: center;
 
 
 /* font awosem */
-.fa, .far, .fas {
+.fa,.fab, .far, .fas,.fa-brands {
   font-family: "Font Awesome 5 Free"!important;
 }
 
@@ -358,4 +362,23 @@ justify-content: center;
   float: right;
   padding: 0.1rem 0 0 0;
   font-size: 0.875rem;
+}
+
+
+/* chatting */
+
+.tawk-card-primary{
+  background-color: var(--primary) !important;
+}
+
+
+
+
+
+.atropos > div, .atropos > span {
+	pointer-events: none;
+}
+
+.atropos a {
+	pointer-events: all;
 }

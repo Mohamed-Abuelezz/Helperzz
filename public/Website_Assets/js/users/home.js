@@ -1,3 +1,28 @@
+
+$('.atropos').each(function(i, obj) {
+  //test
+  var id = $(this).data("id");
+  console.log(id);
+   Atropos({
+    el: `.my-atropos_${id}`,
+    shadow: true,
+    alwaysActive:false,
+  
+    shadowScale: .800,
+    activeOffset: 50,
+  
+    highlight:true,
+  
+    rotateXMax:5,
+    rotateYMax:5,
+  
+    // rest of parameters
+  });
+  
+
+});
+
+
 // ok meds 
 
 
@@ -359,7 +384,23 @@ console.log(response);
 if (response['data']['view'] != '') {
 
   $('#providerCards').append(response['data']['view']);
-
+  $('.atropos').each(function(i, obj) {
+    //test
+    var id = $(this).data("id");
+    console.log(id);
+     Atropos({
+      el: `.my-atropos_${id}`,
+      shadow: true,
+      
+      shadowScale: .800,
+      activeOffset: 50,
+  
+      highlight:false,
+      // rest of parameters
+    });
+    
+  
+  });
 }else{
   page = 0 ;
 }
@@ -379,6 +420,11 @@ console.log(textStatus);
 }
 
 
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  mybutton.style.display = "block";
+} else {
+  mybutton.style.display = "none";
+}
 
 
 
@@ -415,14 +461,31 @@ console.log(textStatus);
           if (response['data']['view'] == '') {
             $('#providerCards').append(`<div class="col" style="margin-top: 10px;text-align:center">
 
-            <h6> ${lang == 'ar' ? 'لاتوجد نتائج 😥': 'No results 😥'} </h6> 
+            <h6> ${lang == 'ar' ? 'لاتوجد نتائج': 'No Results'} </h6> 
             </div>
             `);
 
           }else{
             $('#providerCards').append(response['data']['view']);
             removeMarkers();
-            setMarkers(map ,response['data']['providersMaps'])
+            setMarkers(map ,response['data']['providersMaps']);
+            $('.atropos').each(function(i, obj) {
+              //test
+              var id = $(this).data("id");
+              console.log(id);
+               Atropos({
+                el: `.my-atropos_${id}`,
+                shadow: true,
+                
+                shadowScale: .800,
+                activeOffset: 50,
+            
+                highlight:false,
+                // rest of parameters
+              });
+              
+            
+            });
           }
 
           var y = $(window).scrollTop();  //your current y position on the page
@@ -478,14 +541,30 @@ console.log(textStatus);
 
             $('#providerCards').append(`<div class="col" style="margin-top: 10px;text-align:center">
 
-            <h6> ${lang == 'ar' ? 'لاتوجد نتائج 😥': 'No results 😥'} </h6> 
+            <h6> ${lang == 'ar' ? 'لاتوجد نتائج ': 'No results '} </h6> 
             </div>
             `);
 
           }else{
 
             $('#providerCards').append(response['data']);
-
+            $('.atropos').each(function(i, obj) {
+              //test
+              var id = $(this).data("id");
+              console.log(id);
+               Atropos({
+                el: `.my-atropos_${id}`,
+                shadow: true,
+                
+                shadowScale: .800,
+                activeOffset: 50,
+            
+                highlight:false,
+                // rest of parameters
+              });
+              
+            
+            });
           }
 
           var y = $(window).scrollTop();  //your current y position on the page
@@ -546,7 +625,7 @@ page = 1;
 
         $('#providerCards').append(`<div class="col" style="margin-top: 10px;text-align:center">
 
-        <h6> ${lang == 'ar' ? 'لاتوجد نتائج 😥': 'No results 😥'} </h6> 
+        <h6> ${lang == 'ar' ? 'لاتوجد نتائج ': 'No Results'} </h6> 
         </div>
         `);
 
@@ -555,7 +634,23 @@ page = 1;
         $('#providerCards').append(response['data']['view']);
         removeMarkers();
        setMarkers(map ,response['data']['providersMaps'])
-
+       $('.atropos').each(function(i, obj) {
+        //test
+        var id = $(this).data("id");
+        console.log(id);
+         Atropos({
+          el: `.my-atropos_${id}`,
+          shadow: true,
+          
+          shadowScale: .800,
+          activeOffset: 50,
+      
+          highlight:false,
+          // rest of parameters
+        });
+        
+      
+      });
       }
 
       var y = $(window).scrollTop();  //your current y position on the page

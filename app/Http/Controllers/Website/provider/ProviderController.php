@@ -30,7 +30,7 @@ class ProviderController extends Controller
                 return Carbon::parse($date->created_at)->dayName;
             });
 
-        $reservations = Order::where('serviceProvider_id', Auth::guard('provider')->id())->whereIn('ordersStatus_id', [3, 4, 5])->with(['user.country','user.state','user.city'])->orderBy('created_at', 'Desc')->paginate(12);
+        $reservations = Order::where('serviceProvider_id', Auth::guard('provider')->id())->whereIn('ordersStatus_id', [3, 4, 5])->with(['user.country','user.state','user.city','provider'])->orderBy('created_at', 'Desc')->paginate(12);
 
         $acceptOrderConditions =     AcceptOrderCondition::all();
 

@@ -19,10 +19,11 @@
   transition: 1s;
   position: relative;
 }
-/* .cards .card:hover {
-  background-color: var(--primary);
-  color: white !important;
-} */
+.cards .card:hover {
+  cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s;
+}
 
 /* .cards .card:hover .personal-data h6,
 .cards .card:hover .personal-data p,
@@ -83,8 +84,8 @@ align-items: flex-end;
   color: grey;
 }
 
-.cards .card .fav {
-  background-color: var(--primary);
+.cards .card .remove {
+  background-color: var(--buttons);
 
   position: absolute;
   top: 15px;
@@ -100,7 +101,7 @@ align-items: flex-end;
   z-index: 0;
 }
 
-.cards .card .fav i {
+.cards .card .remove i {
   color: red;
   font-size: 20px;
 }

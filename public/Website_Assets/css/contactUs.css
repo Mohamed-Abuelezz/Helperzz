@@ -1,5 +1,19 @@
+.fields:hover{
 
 
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+    transition: box-shadow 1s;
+    
+}
 
+.contctInformations:hover{
+
+
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+    transition: box-shadow 1s;
+    
+}
 
 

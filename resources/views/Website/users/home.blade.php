@@ -7,7 +7,14 @@
 
     @include('Website.globalElements.meta')
 
+    <title>
+        {{ Config::get('app.locale') == 'en'? 'Search now available service providers and professions.': ' ابحث الان مقدمين الخدمات واصحاب المهن المتاحين .' }}
+    </title>
+    <meta name="description"
+        content="{{ Config::get('app.locale') == 'en'? 'You can see the providers and professions you need, search for them and see their reviews.':
+         'يمكنك رؤية مقدمي الخدمات واصحاب المهن الذين تحتاجهم والبحث عنهم ورئية تقييماتهم .' }}">
 
+    <meta name="googlebot" content="index,follow">
 
     <!--  JS  ------------------------------------------------------------------------------>
 
@@ -23,6 +30,7 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href=" {{ asset('Website_Assets/packages/Toast-Popup-Plugin-jQuery-Toaster/toast.style.min.css') }}" />
+        <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.css') }}" />
 
 
     <!-- project css -->
@@ -33,7 +41,19 @@
 
 
 </head>
-
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/626efb0fb0d10b6f3e70310c/1g20rcqg0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 <body dir="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}" lang="{{ Config::get('app.locale') }}">
 
 
@@ -54,6 +74,7 @@
 
 
     <!------------------------------------- Search Section-->
+<header>
 
     <section>
         <div class="container">
@@ -73,7 +94,7 @@
 
 
                 <div class="collapse" id="collapseBody-advancedSearch">
-                    <div class="card card-body">
+                    <div class="card card-body ">
 
 
                         <div class="selects">
@@ -129,7 +150,7 @@
 
                             </div>
 
-                            <div class="item">
+                            <div class="item more" style="display: {{ 'none' }}">
 
                                 <label for="id_label_single">
                                     {{ Config::get('app.locale') == 'ar' ? ' المزيد ' : 'More' }}
@@ -201,7 +222,7 @@
 
 
                             </div>
-                            <div class="item">
+                            <div class="item city">
 
                                 <label for="id_label_single">
                                     {{ Config::get('app.locale') == 'ar' ? 'المدينة' : 'City' }}
@@ -232,15 +253,16 @@
 
 
                         </div>
-                        <br>
-                        <br>
-                        <div id="loadingCards1" style="text-align: center">
+
+                        <div style="width: 150px;margin: auto">
+
+                        <div id="loadingCards1" style="text-align: center;margin-bottom: 5px;">
 
                             <a href="#" id="search"
-                                class="button_2_style">{{ Config::get('app.locale') == 'ar' ? 'البحث' : 'Search' }}</a>
+                                class="button_1_style">{{ Config::get('app.locale') == 'ar' ? 'البحث' : 'Search' }}</a>
 
                         </div>
-
+                    </div>
 
                     </div>
                 </div>
@@ -261,7 +283,7 @@
                 <div class="searchDiv" style="width: 200px">
                     <div id="loadingSearchInput">
 
-                        <input type="search" class="form-control shadow-none custome-textFiled" id="searchInput"
+                        <input type="search" class="form-control custome-textFiled" id="searchInput"
                             placeholder="{{ Config::get('app.locale') == 'ar' ? 'ابحث...' : 'Search...' }}">
 
                     </div>
@@ -299,7 +321,7 @@
                         <button type="button" class="button_1_style d-lg-none float-end" data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop">
                             <img src=" {{ asset('Website_Assets/assets/icons/google-maps-icon-3d-24.jpg') }}"
-                                width="20" alt="">
+                                width="20" alt="google maps icon">
                         </button>
 
                     </div>
@@ -314,7 +336,7 @@
 
             <button type="button" class="button_1_style d-none d-lg-block" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
-                <img src="{{ asset('Website_Assets/assets/icons/google-maps-icon-3d-24.jpg') }}" width="20" alt="">
+                <img src="{{ asset('Website_Assets/assets/icons/google-maps-icon-3d-24.jpg') }}" width="20" alt="google maps icon">
             </button>
 
 
@@ -325,8 +347,13 @@
         </div>
 
     </section>
+
+</header>
+
     <br>
     <!-------------------------------------End Search Section-->
+
+<main>
 
 
     <section>
@@ -352,12 +379,15 @@
 
 
     </section>
+
+
     <br>
     <div class="d-flex justify-content-center ">
         <div class="spinner-border" style="color: #009DAE;display: none" role="status" id="loadMore">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
+</main>
 
     <br>
     <br>
@@ -395,7 +425,7 @@
         var lat = {!! json_encode($lat) !!};
         var lng = {!! json_encode($lng) !!};
 
-        var providers = {!! json_encode($providersMaps) !!};
+        var providers = {!! json_encode($providersMaps->makeHidden(['address', 'phone','email','idCard_photo','wallet','isActive',''])) !!};
     </script>
 
 
@@ -409,6 +439,7 @@
     <script src=" {{ asset('Website_Assets/packages/js-loading-overlay-master/dist/js-loading-overlay.min.js') }}">
     </script>
     <script src=" {{ asset('Website_Assets/packages/sweet alert/dist/sweetalert2.min.js') }}"></script>
+    <script  src=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.js') }}" ></script>
 
 
     <!-- project js -->
@@ -426,6 +457,7 @@
             $.Toast(lang ? "خطأ" : "Error", {!! json_encode($message) !!}, "error", {
                 position_class: "toast-top-right",
             });
+            
         </script>
     @enderror
 

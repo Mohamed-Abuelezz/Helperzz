@@ -199,7 +199,7 @@
                       data-bs-placement="bottom">
 
 
-                      <img src="{{ auth()->user()->image == null? asset('Website_Assets/assets/images/userImageDefault.png'): asset('storage/' . auth()->user()->image) }}"
+                      <img src="{{ auth()->user()->image == null?( auth()->user()->gender == 1 ?  asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png')): asset('storage/' . auth()->user()->image) }}"
                           width="40" height="40" />
                       <i class="fas fa-caret-down " style="color: white;position: absolute;bottom: 0;right: 10px;"></i>
 
@@ -231,7 +231,7 @@
           <div class="">
               <div id="mySidenav" class="sidenav">
                   <a href="javascript:void(0)" class="closebtn" id="closeNav">&times;</a>
-                  <img src="{{ auth()->user()->image == null? asset('Website_Assets/assets/images/userImageDefault.png'): asset('storage/' . auth()->user()->image) }}" width="100" height="100"
+                  <img src="{{ auth()->user()->image == null?( auth()->user()->gender == 1 ?  asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png')): asset('storage/' . auth()->user()->image) }}" width="100" height="100"
                       style="margin: 0px auto;border-radius: 50%;" />
 
 <a

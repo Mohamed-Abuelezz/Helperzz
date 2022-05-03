@@ -7,6 +7,11 @@
   <!-- Required meta tags -->
   @include('Website.globalElements.meta')
 
+  <title>
+    {{ Config::get('app.locale') == 'en'? 'Forgot Password':'نسيت كلمة المرور'}}
+</title>
+
+  <meta name='robots' content="noindex,nofollow">
 
 
     <!--  JS  ------------------------------------------------------------------------------>

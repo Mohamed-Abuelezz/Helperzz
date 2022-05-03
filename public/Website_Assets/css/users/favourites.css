@@ -12,14 +12,15 @@
 position: relative;
 }
 .cards .card:hover  {
-  background-color: var(--primary);
-  color: white !important;
+  cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s;
 }
 
-.cards .card:hover .personal-data h6,.cards .card:hover .personal-data p,.cards .card:hover .personal-data .rate ,.cards .card:hover .content .bio p{
+/* .cards .card:hover .personal-data h6,.cards .card:hover .personal-data p,.cards .card:hover .personal-data .rate ,.cards .card:hover .content .bio p{
   color: white !important;
   
-}
+} */
 
 .cards .card img{
   border-radius: 20px;
@@ -70,7 +71,7 @@ font-size: 15px;
     }
 
     .cards .card .fav{
-      background-color: var(--primary)  ;
+      background-color: var(--buttons);
 
     
       position: absolute;
@@ -88,30 +89,11 @@ font-size: 15px;
     }
 
     .cards .card .fav  i{
-color: gold;font-size: 20px;
+color: gold;
+font-size: 20px;
     }
 
-.cards .card .fav {
-  background-color: var(--primary);
 
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  z-index: 0;
-}
-
-.cards .card .fav i {
-  color: red;
-  font-size: 20px;
-}
 
 .pagi ul{
   width: 200px !important;

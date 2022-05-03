@@ -52,7 +52,6 @@ class AccountController extends Controller
 
             'country' => 'required',
             'state' => 'required',
-            'city' => 'required',
 
             'service_department' => 'required',
             'specialization' => 'required',

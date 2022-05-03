@@ -14,7 +14,7 @@ class FavouritesController extends Controller
     public function index(Request $request)
     {
 
-        $favourites = Favourite::where('user_id', Auth::id())->paginate(1);
+        $favourites = Favourite::where('user_id', Auth::id())->paginate(12);
 
         return view('Website.users.favourites', [
             'favourites' => $favourites

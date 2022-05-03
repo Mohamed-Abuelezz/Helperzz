@@ -6,7 +6,7 @@
 
 <meta name="author" content="{{\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name}}">
 <meta name="keywords" content="
-nhs jobs,1900,$0.47,High,
+nhs jobs,1900,$0.47,High,Helperzz,helperz,helperzz,help,helping
 amazon jobs,6600,$0.18,High,
 work from home jobs,880,$0.29,Medium,
 freelance,40500,$0.14,High,

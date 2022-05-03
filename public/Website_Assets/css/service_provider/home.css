@@ -4,7 +4,6 @@
 
 
 
-
 /******************* Footer Section */
 
 
@@ -82,6 +81,14 @@
   width: 100% !important; 
 
   }
+
+  .cards .card:hover  {
+    color: white !important; 
+     cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  position: relative;
+  }
+  
 @media (max-width: 991.98px) { 
 
   .statistics .cards{

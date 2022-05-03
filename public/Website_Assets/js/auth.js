@@ -70,6 +70,10 @@ function initMap() {
     //    map.setOptions({styles: myStyle});
         map.setOptions({styles: styles});
 
+        if (oldLng != null) {
+          placeMarker({ lat: Number(oldLat), lng: Number(oldLng) },map);
+
+        }
 
         google.maps.event.addListener(map, 'click', function(event) {
           placeMarker(event.latLng,map);
@@ -137,7 +141,7 @@ function pinSymbol(color) {
       {
         width:'resolve',
         selectionCssClass: 'select-item', // need to override the changed default
-        placeholder: lang == 'ar' ? 'اختار المدينة' :"Select a City"
+        placeholder: lang == 'ar' ? 'المدينة [اختياري]' :"City ​​[optional]"
 
       }
     );
@@ -155,7 +159,7 @@ function pinSymbol(color) {
       {
         width:'resolve',
         selectionCssClass: 'select-item', // need to override the changed default
-        placeholder: lang == 'ar' ? 'اختار المدينة' :"Select a City"
+        placeholder: lang == 'ar' ? 'المدينة [اختياري]' :"City ​​[optional]"
 
       }
     );

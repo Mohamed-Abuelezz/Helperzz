@@ -313,14 +313,26 @@ function getSpecializationOrMoreServices({url,parentId, elementId,loadingElement
       var selectElement = document.getElementById(elementId);
       $('#'+elementId).empty();
 
+
+      if ( response['data'].length != 0) {
+        $('.'+elementId).show();
+
+
       selectElement.add(new Option());
       if (isFromHome == true) {
         selectElement.add(new Option(lang == 'ar' ?  'الكل' : 'All' ,'all'));
 
       }
+
       response['data'].forEach((item, i) => {
         selectElement.add(new Option(lang == 'ar' ? item['name_ar'] : item['name_en'],item['id'],( i == 0 ? true : false)));
       });
+
+    }else{
+      $('.'+elementId).hide();
+
+     }
+
       hideLoading() ;
 
 

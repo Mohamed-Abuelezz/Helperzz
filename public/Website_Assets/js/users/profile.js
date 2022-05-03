@@ -1,3 +1,17 @@
+Atropos({
+  el: `.my-atropos`,
+  shadow: false,
+  
+  shadowScale: .800,
+  activeOffset: 15,
+
+  highlight:false,
+
+  rotateXMax:1,
+  rotateYMax:1,
+  // rest of parameters
+});
+
 if (isProviderAuth) {
   const parser2 = new DOMParser();
 
@@ -704,6 +718,7 @@ $(document).ready(function (e) {
             hideLoading() ;
             $('#reservationModal').modal('toggle');
           
+            console.log(data);
           }
       });
 

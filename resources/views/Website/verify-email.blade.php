@@ -7,6 +7,12 @@
   <!-- Required meta tags -->
   @include('Website.globalElements.meta')
 
+  <title>
+    {{ Config::get('app.locale') == 'en'? 'verify email':'تأكيد البريد الاليكنروني'}}
+</title>
+
+  <meta name='robots' content="noindex,nofollow">
+
 
 
     <!--  JS  ------------------------------------------------------------------------------>

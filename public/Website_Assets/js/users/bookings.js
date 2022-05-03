@@ -3,28 +3,38 @@ $(document).ready(function() {
 
 
   $(".remove").click(function(){
+    var id=$(this).attr("data-id");
 
+    showNoteAlert({msg: lang == 'ar' ? `هل تريد الغاء الحجز رقم ${$(this).attr("data-id")} ؟` : `Do you want to cancel the reservation ${$(this).attr("data-id")} ?`,
+    confirmButtonText: lang == 'ar' ? 'الغاء الحجز' : 'Cancel Reservation' }, function(){
 
-
-var id=$(this).attr("data-id");
-var request = sendAjaxRequest({url:(APP_URL+'/'+id+'/api/reservations/remove'),method: 'POST',data:{}});
-
-
-request.done(function(response) {
-
-if (response['data'] == 1) {
-  $(`#card_${id}`).remove();
-}
-
-
-
-
+      var request = sendAjaxRequest({url:(APP_URL+'/'+id+'/api/reservations/remove'),method: 'POST',data:{}});
+      
+      
+      request.done(function(response) {
+      
+      if (response['data'] == 1) {
+        $.Toast( lang ?  "تم" : "Done", response['message'] ,  "success",{
+          position_class:"toast-top-right",
+        });
+        $(`#card_${id}`).remove();
+      }
+      
+      
+      
+      
+          });
+          request.fail(function(jqXHR, textStatus) {
+      
+            $.Toast( lang ?  "خطأ" : "Error", jqXHR['statusText'] ,  "error",{
+              position_class:"toast-top-right",
+          });
+      
+        });
+      
     });
-    request.fail(function(jqXHR, textStatus) {
 
 
-
-  });
 
 
 });

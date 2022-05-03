@@ -1,15 +1,16 @@
 <style>
       
-  #top {
+      #top {
     display: none; 
     position: fixed; 
-    bottom: 50px; 
-    right: 30px; 
+    bottom: 20px; 
+    left: 30px; 
+    right: unset;
     z-index: 99; 
     border: none; 
     outline: none; 
-    background-color: var(--buttons);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: white;
     cursor: pointer; 
     padding: 15px;
     border-radius: 15px;
@@ -17,10 +18,11 @@
   }
   
   #top:hover {
-    background-color: var(--primary);
-    color: white;
-    box-shadow: 5px 5px 10px;
+    cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .40);
+  transition: box-shadow 1s;
   }
+  
 
 </style>
 
@@ -42,4 +44,4 @@
 </footer>
 
 
-<button onclick="topFunction()" id="top" title="Go to top">Top</button>
+<button onclick="topFunction()" id="top" title="Go to top"> {{Config::get('app.locale') == 'ar' ? 'اعلي' : 'Top' }}</button>

@@ -153,14 +153,18 @@ function initMap() {
       center: uluru,
     });
 
-    if (lat != null) {
-      placeMarker({ lat: Number(lat), lng: Number(lng) },map);
 
-    }else{
       //placeMarker({ lat: Number(myLat), lng: Number(myLng) },map);
 
+      if (oldLng != null) {
+        placeMarker({ lat: Number(oldLat), lng: Number(oldLng) },map);
 
-    }
+      }else  if (lat != null) {
+        placeMarker({ lat: Number(lat), lng: Number(lng) },map);
+  
+      }
+
+
 
 
     var styles =[

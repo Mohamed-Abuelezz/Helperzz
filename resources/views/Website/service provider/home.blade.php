@@ -8,7 +8,13 @@
     @include('Website.globalElements.meta')
 
 
-
+    <meta name='robots' content="noindex,nofollow">
+    <title>
+        {{ Config::get('app.locale') == 'ar' ? 'الرئيسية' : 'Home' }}
+    </title>
+    
+      <meta name='robots' content="noindex,nofollow">
+    
 
     <!--  JS  ------------------------------------------------------------------------------>
 
@@ -30,6 +36,19 @@
 
 
 </head>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/626efb0fb0d10b6f3e70310c/1g20rcqg0';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
 
 <body dir="{{ Config::get('app.locale') == 'ar' ? 'rtl' : 'ltr' }}" lang="{{ Config::get('app.locale') }}">
 
@@ -49,7 +68,7 @@
     <br>
     <br>
     <br>
-    <section>
+     <main>
 
         <div class="taps container">
 
@@ -92,7 +111,7 @@
                             </div>
                         </div> -->
 
-                        <div class="card text-white  mb-3" style="max-width: 18rem;">
+                        <div class="card text-white shadow  mb-3" style="max-width: 18rem;">
                             <div class="card-header">
                                 {{ Config::get('app.locale') == 'ar' ? 'الحجوزات' : 'Reservations' }}</div>
                             <div class="card-body">
@@ -103,7 +122,7 @@
                             </div>
                         </div>
 
-                        <div class="card text-white  mb-3" style="max-width: 18rem;">
+                        <div class="card text-white shadow mb-3" style="max-width: 18rem;">
                             <div class="card-header">
                                 {{ Config::get('app.locale') == 'ar' ? 'المفضلة' : 'Favourites' }}</div>
                             <div class="card-body">
@@ -114,7 +133,7 @@
                             </div>
                         </div>
 
-                        <div class="card text-white  mb-3" style="max-width: 18rem;">
+                        <div class="card text-white shadow mb-3" style="max-width: 18rem;">
                             <div class="card-header">
                                 {{ Config::get('app.locale') == 'ar' ? 'اجمالي المشاهدات' : 'Total Views' }}</div>
                             <div class="card-body">
@@ -189,17 +208,18 @@
                         <div class="row justify-content-center row-cols-1 row-cols-lg-3 row-cols-xl-4 g-1">
 
                             @if ($reservations->isEmpty())
-                            <h6 style="text-align: center"> {{ Config::get('app.locale') == 'ar' ? 'لاتوجد حجوزات 😥' : 'No Reservations 😥' }} </h6>
+                            <h6 style="text-align: center"> {{ Config::get('app.locale') == 'ar' ? 'لاتوجد حجوزات' : 'No Reservations' }} </h6>
 
                             @else
 
                             @foreach ($reservations as $reservation)
                             <div class="col " id="card_{{ $reservation->id }}" data-aos="zoom-in-up"
                                 style="margin-top: 10px">
-                                <div class="card shadow" style="height: 500px;overflow: hidden">
+                                <div class="card" style="height: 500px;overflow: hidden">
 
-                                    <img  src="{{ $reservation->user->image == null || $reservation->ordersStatus_id == 3 || $reservation->ordersStatus_id == 5? asset('Website_Assets/assets/images/userImageDefault.png'): asset('storage/' . $reservation->user->image) }} "
-                                        height="250" class="card-img-top order_image" data-id="{{$reservation->id}}" alt="...">
+                                    <img  src="{{ $reservation->user->image == null || $reservation->ordersStatus_id == 3 || $reservation->ordersStatus_id == 5? 
+                                    ($reservation->user->gender == 1  ?   asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png') ): asset('storage/' . $reservation->user->image) }} "
+                                        height="250" class="card-img-top order_image" data-id="{{$reservation->id}}" alt="user image">
 
                                     <div class="card-body">
 
@@ -329,20 +349,8 @@
             </div>
         </div>
 
-        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-    </section>
+     </main>
 
 
 

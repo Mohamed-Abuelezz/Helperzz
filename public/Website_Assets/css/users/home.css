@@ -3,16 +3,23 @@
   .advanced-search {
     margin-top: 100px;
     margin-bottom: 20px;
-    background-color: var(--primary);
+    background-color:transparent;
+border: .5px solid grey;
     padding: 10px;
     border-radius: 5px;
     position: relative;
     width: 100%;
-    max-height: 400px !important;
+    /* max-height: 500px !important; */
 overflow: hidden !important;
   }
+  .advanced-search:hover{
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+    transition: box-shadow 1s;
+
+  }
   .advanced-search .item-nav{
-    color: white;
+    color: var(--primary);
     text-decoration: none;
 
   }
@@ -36,16 +43,17 @@ justify-content: space-between;
   }
   .advanced-search #collapseBody-advancedSearch .card-body{
     border: none;
-    background-color: var(--primary);
+    background-color: white;
 display: flex;
 flex-direction: column;
 justify-content: center;
+gap: 40px;
   }
 
   
 
   .advanced-search #collapseBody-advancedSearch .card-body .selects label{
-    color: white;
+    color: black;
     
   }
   .break {
@@ -67,8 +75,11 @@ justify-content: center;
   }
 
 
-  .advanced-search #collapseBody-advancedSearch .card-body .button_2_style{
+
+  .advanced-search #collapseBody-advancedSearch .card-body .button_1_style{
     padding: 10px 40px;
+    width: 100% !important;
+    display: block;
   }
 
   .select2-container .select2-selection--single {
@@ -211,21 +222,34 @@ img[src$="#custom_marker"]{
 .cards .card{
   border-radius: 20px;
   transition: 1s;
-position: relative;
 }
 .cards .card:hover  {
-  background-color: var(--primary);
-  color: white !important;
+  /* background-color: var(--primary);
+  color: white !important; */
+  /* cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15); */
+  cursor: pointer;
+  /* box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s; */
 }
 
-.cards .card:hover .personal-data h6,.cards .card:hover .personal-data p,.cards .card:hover .personal-data .rate ,.cards .card:hover .content .bio p{
+.atropos:hover  {
+ /* background-color: var(--primary);
+  color: white !important; */
+   /* cursor: pointer;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s; */
+
+}
+
+/* .cards .card:hover .personal-data h6,.cards .card:hover .personal-data p,.cards .card:hover .personal-data .rate ,.cards .card:hover .content .bio p{
   color: white !important;
   
-}
+} */
 
 .cards .card img{
   border-radius: 20px;
-
+height: 200px;
 }
 .cards .content .personal-data{
   display: flex;
@@ -332,7 +356,7 @@ margin-top: 6px;
         }
         .footer{
           margin: 0;
-          padding: 0;
+          padding: 5px;
           width: 100%; 
         }
         footer p{
