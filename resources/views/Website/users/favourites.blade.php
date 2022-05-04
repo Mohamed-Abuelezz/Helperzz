@@ -78,7 +78,7 @@
 
                             <a href="{{ route('profile', ['id' => $favourite->provider->id]) }}">
                                 <div class="card">
-                                    <img src="{{ asset('storage/' . $favourite->provider->image) }}" height="250"
+                                    <img src="{{ asset('storage/' . $favourite->provider->image) }}" height="200"
                                         class="card-img-top " alt="{{ $favourite->provider->name }}">
                                     <div class="card-body">
 
@@ -88,7 +88,7 @@
                                                 <div class="name-address">
                                                     <h6> {{ strlen($favourite->provider->name) >= 25? substr($favourite->provider->name, 0, 25) . '...': $favourite->provider->name }}
                                                     </h6>
-                                                    <p> {{ $favourite->provider->country->name . '/' . $favourite->provider->city->name }}
+                                                    <p> {{ $favourite->provider->country->name . '/' .($favourite->provider->city != null ? $favourite->provider->city->name : $favourite->provider->state->name ) }}
                                                     </p>
                                                     <p> {{ Config::get('app.locale') == 'ar'? $favourite->provider->serviceCatogrey->name_ar: $favourite->provider->serviceCatogrey->name_en }}
                                                         /
@@ -102,7 +102,7 @@
                                             </div>
 
                                             <div class="bio">
-                                                <p> {{ strlen($favourite->provider->bio) >= 200? substr($favourite->provider->bio, 0, 200) . '...': $favourite->provider->bio }}
+                                                <p> {{ strlen($favourite->provider->bio) >= 200? mb_strimwidth($favourite->provider->bio, 0, 200, "...") : $favourite->provider->bio }}
                                                 </p>
                                             </div>
 

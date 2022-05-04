@@ -74,9 +74,9 @@
 
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->user->name }}</td>
-                                <td>{{ $order->user->country->name . ' / ' . $order->user->state->name . ' / ' . $order->user->city->name }}</td>
+                                <td>{{ $order->user->country->name . ' / ' . $order->user->state->name . ' / ' . ($order->user->city!= null ?   $order->user->city->name  : 'لايوجد مدينة' )}}</td>
                                 <td>{{ $order->provider->name }}</td>
-                                <td>{{ $order->provider->country->name . ' / ' . $order->provider->state->name . ' / ' . $order->provider->city->name }}</td>
+                                <td>{{ $order->provider->country->name . ' / ' . $order->provider->state->name . ' / ' .  ($order->provider->city!= null ?   $order->provider->city->name  : 'لايوجد مدينة' ) }}</td>
 
                                 <td>{{ $order->describe }}</td>
 

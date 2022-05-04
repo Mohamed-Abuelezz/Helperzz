@@ -24,7 +24,7 @@
                                                 <div class="name-address">
                                                     <h6> {{ strlen($provider->name) >= 25 ? substr($provider->name, 0, 24) . '...' : $provider->name }}
                                                     </h6>
-                                                    <p> {{ $provider->country->name . '/' . $provider->city->name }}</p>
+                                                    <p> {{ $provider->country->name . '/' .($provider->city != null ?  $provider->city->name :  $provider->state->name) }}</p>
                                                     <p> {{ Config::get('app.locale') == 'ar'? $provider->serviceCatogrey->name_ar: $provider->serviceCatogrey->name_en }}
                                                         /
                                                         {{ Config::get('app.locale') == 'ar' ? $provider->specialization->name_ar : $provider->specialization->name_en }}
@@ -37,7 +37,7 @@
                                             </div>
 
                                             <div class="bio">
-                                                <p> {{ strlen($provider->bio) >= 200 ? substr($provider->bio, 0, 200) . '...' : $provider->bio }}
+                                                <p> {{ strlen($provider->bio) >= 200 ?mb_strimwidth($provider->bio, 0, 200, "...") : $provider->bio }}
                                                 </p>
                                             </div>
 

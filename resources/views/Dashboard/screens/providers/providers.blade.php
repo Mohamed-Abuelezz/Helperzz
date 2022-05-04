@@ -81,7 +81,7 @@
 
                                 <td>{{ $provider->email }}</td>
 
-                                <td>{{ $provider->country->name. ' / ' . $provider->state->name . ' / ' .  $provider->city->name }}</td>
+                                <td>{{ $provider->country->name. ' / ' . $provider->state->name . ' / ' . ($provider->city != null ? $provider->city->name : 'لايوجد مدينة') }}</td>
                                 <td>{{ $provider->phone  }} </td>
 
                                 <td>{{ $provider->lat. ' / ' . $provider->lng  }} </td>

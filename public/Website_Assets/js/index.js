@@ -97,15 +97,22 @@ $('.slider').slick({
   $('.reviews .items').slick({
     infinite: true,
     slidesToShow: 3,
+    autoplay:true,
     slidesToScroll: 1,
     centerMode: frameElement, 
     rtl: lang == 'ar' ? true : false,
+    speed: 2000,
 
     responsive: [
         {
           breakpoint: 991.98,
           settings: {
+            lazyLoad: 'progressive',
+            arrows: true,
+            dots: false,
+        
             slidesToShow: 1,
+    autoplay:true,
             infinite: true,        
             slidesToScroll: 1,
             centerMode: false,

@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         
         $websiteViews =     WebsiteViews::where('mac', $_SERVER['REMOTE_ADDR'])->whereDate('created_at', Carbon::today())->get();
-
+//dd($websiteViews);
         if ($websiteViews->isEmpty()) {
             # code...
          //   dd(empty($ServiceProviderView));
@@ -35,6 +35,9 @@ class HomeController extends Controller
             $websiteViews = new WebsiteViews;
             $websiteViews->mac =  $_SERVER['REMOTE_ADDR'];
             $websiteViews->save();
+
+
+            return redirect()->route('index', []);
         }
 
 

@@ -342,7 +342,7 @@ $('.textarea3').keyup(function() {
   
         <div class="infoMap">
             <p>${ lang == 'ar' ? provider['service_catogrey']['name_ar'] :  provider['service_catogrey']['name_en']}</p>
-            <p> ${ provider['country']['name'] + '/' +  provider['city']['name'] }
+            <p> ${ provider['country']['name'] + '/' +  (provider['city'] != null ? provider['city']['name'] : provider['state']['name']) }
         </div>
     
     

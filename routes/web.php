@@ -247,6 +247,7 @@ Route::post('/{id}/api/profile/reservation', [ProfileController::class, 'reserva
 Route::get('/index', function () {
 
   return view('Website.index');
+  
 })->name('index');
 
 Route::get('/termsAndConditions', function () {

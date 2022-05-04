@@ -102,7 +102,7 @@
                                             alt="{{ $serviceProvider->name }}">
                                         <p>{{ $serviceProvider->name }}</p>
                                         <span>{{ $serviceProvider->country->name }} /
-                                            {{ $serviceProvider->city->name }}</span>
+                                            {{ ($serviceProvider->city != null ?  $serviceProvider->city->name :  $serviceProvider->state->name)  }}</span>
                                     </div>
                                     <div class="bio">
                                         {{ $serviceProvider->bio }} </div>
@@ -246,7 +246,7 @@
                     <img src="{{ asset('storage/' . $serviceProvider->image) }}"
                         alt="{{ $serviceProvider->name }}">
                     <p>{{ $serviceProvider->name }}</p>
-                    <span>{{ $serviceProvider->country->name }} / {{ $serviceProvider->city->name }}</span>
+                    <span>{{ $serviceProvider->country->name }} / {{ ($serviceProvider->city != null ?  $serviceProvider->city->name :  $serviceProvider->state->name)  }}</span>
                 </div>
 
 

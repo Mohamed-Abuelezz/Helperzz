@@ -96,14 +96,14 @@ class ReportsCommentsController extends Controller
                 $user->save();
 
 
-            Mail::to($reportComment->comment->user->email)->send(new DashboardMail( $msguser,null));
-            Mail::to($reportComment->serviceProvider->email)->send(new DashboardMail( $msgprovider,null));
+            Mail::to($reportComment->comment->user->email)->queue(new DashboardMail( $msguser,null));
+            Mail::to($reportComment->serviceProvider->email)->queue(new DashboardMail( $msgprovider,null));
                 
 
             } else  {
                 # code...
                 $msgprovider= Config::get('app.locale') == 'ar' ? 'لقد تم فحص رسالتك المبلغ عنها للمستخدم '.$reportComment->comment->user->name.'  ولم يتم ايجاد اي خروقات لسياسات الاستخدام ... شكرا لتفهمك ❤️ ': 'Your message reported to the user '.$reportComment->comment->user->name.'has been checked no violations of usage policies have been found... Thank you for your understanding ❤️' ;
-                Mail::to($reportComment->serviceProvider->email)->send(new DashboardMail( $msgprovider,null));
+                Mail::to($reportComment->serviceProvider->email)->queue(new DashboardMail( $msgprovider,null));
 
             }
             

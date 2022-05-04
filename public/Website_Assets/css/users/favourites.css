@@ -10,6 +10,7 @@
   border-radius: 20px;
   transition: 1s;
 position: relative;
+height: 415px;
 }
 .cards .card:hover  {
   cursor: pointer;
@@ -24,7 +25,6 @@ position: relative;
 
 .cards .card img{
   border-radius: 20px;
-
 }
 .cards .content .personal-data{
   display: flex;

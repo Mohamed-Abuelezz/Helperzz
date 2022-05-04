@@ -78,7 +78,7 @@
 
                                 <td>{{ $user->email }}</td>
 
-                                <td>{{ $user->country->name. ' / ' . $user->state->name . ' / ' .  $user->city->name }}</td>
+                                <td>{{ $user->country->name. ' / ' . $user->state->name . ' / ' . ( $user->city != null ? $user->city->name : 'لاتوجد مدينة') }}</td>
                                 <td>{{ $user->phone  }} </td>
                                 <td class="d-flex flex-row justify-content-between g-5"  style="gap: 10px">
 

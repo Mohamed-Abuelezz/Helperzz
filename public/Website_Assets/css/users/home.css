@@ -222,6 +222,7 @@ img[src$="#custom_marker"]{
 .cards .card{
   border-radius: 20px;
   transition: 1s;
+  height: 415px;
 }
 .cards .card:hover  {
   /* background-color: var(--primary);

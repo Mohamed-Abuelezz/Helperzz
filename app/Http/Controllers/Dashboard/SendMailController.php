@@ -58,7 +58,7 @@ class SendMailController extends Controller
         $mail->save();
 
 
-        Mail::to($request->email)->send(new DashboardMail($request->message,null));
+        Mail::to($request->email)->queue(new DashboardMail($request->message,null));
         
         return redirect()->route('sendMail.index')->with('msg', 'تم بنجاح');
         

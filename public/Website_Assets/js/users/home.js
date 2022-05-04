@@ -177,7 +177,7 @@ var map;
 
       <div class="info">
           <p>${ lang == 'ar' ? providers[i]['specialization']['name_ar'] :  providers[i]['specialization']['name_en']}</p>
-          <p> ${ providers[i]['country']['name'] + '/' +  providers[i]['city']['name'] }
+          <p> ${ providers[i]['country']['name'] + '/' +  (providers[i]['city'] != null ? providers[i]['city']['name'] : providers[i]['state']['name'] ) }
       </div>
   
   

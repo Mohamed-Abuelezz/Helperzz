@@ -97,12 +97,22 @@
                             <h2 class="animated top-title" data-animation-in="fadeInUp">
                                 {{ Config::get('app.locale') == 'ar'? 'سجل الان لتستطيع التواصل مع مقدمي الخدمات.': 'Register now to be able to communicate with service providers.' }}
                             </h2>
-
+<br>
                             <!-- Google Play button -->
-                            {{-- <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn google-btn" role="button">
-  <span class="market-button-subtitle">Download on the</span>
-  <span class="market-button-title">Google Play</span>
-</a> --}}
+                            <div class="buttons d-flex flex-row justify-content-center" style="">
+{{-- 
+                                <div class="play" style="margin: 5px">
+                                    <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn google-btn" role="button">
+                                        <span class="market-button-subtitle">Download on the</span>
+                                        <span class="market-button-title">Google Play</span>
+                                      </a>
+                                      
+                                </div> --}}
+
+                                <div class="startNow" style="margin: auto 5px">
+                                    <a href="{{route('home')}}" class="button_1_style">{{ Config::get('app.locale') == 'ar' ? 'ابدأ الان' : 'Start Now' }}</a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -120,6 +130,21 @@
                             </p>
                             <h2 class="animated title" data-animation-in="fadeInLeft">
                                 {{ Config::get('app.locale') == 'ar' ? 'مقدم الخدمة' : 'Service Provider' }}</h2>
+<br>
+                                <div class="buttons d-flex flex-row justify-content-start" style="">
+                                    {{-- 
+                                                                    <div class="play" style="margin: 5px">
+                                                                        <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn google-btn" role="button">
+                                                                            <span class="market-button-subtitle">Download on the</span>
+                                                                            <span class="market-button-title">Google Play</span>
+                                                                          </a>
+                                                                          
+                                                                    </div> --}}
+                                    
+                                                                    <div class="startNow" style="margin: auto 5px">
+                                                                        <a href="{{route('home')}}" class="button_1_style">{{ Config::get('app.locale') == 'ar' ? 'ابدأ الان' : 'Start Now' }}</a>
+                                                                    </div>
+                                 </div>
                         </div>
                     </div>
                 </div>
@@ -136,6 +161,21 @@
                             </p>
                             <h2 class="animated title" data-animation-in="fadeInRight">
                                 {{ Config::get('app.locale') == 'ar' ? 'التكلفة' : 'The Cost' }}</h2>
+                                <br>
+                                <div class="buttons d-flex flex-row justify-content-start" style="">
+                                    {{-- 
+                                                                    <div class="play" style="margin: 5px">
+                                                                        <a href="https://www.kobinet.com.tr/" target="_blank" class="market-btn google-btn" role="button">
+                                                                            <span class="market-button-subtitle">Download on the</span>
+                                                                            <span class="market-button-title">Google Play</span>
+                                                                          </a>
+                                                                          
+                                                                    </div> --}}
+                                    
+                                                                    <div class="startNow" style="margin: auto 5px">
+                                                                        <a href="{{route('home')}}" class="button_1_style">{{ Config::get('app.locale') == 'ar' ? 'ابدأ الان' : 'Start Now' }}</a>
+                                                                    </div>
+                                 </div>
                         </div>
                     </div>
                 </div>
@@ -163,6 +203,14 @@
                 {{ Config::get('app.locale') == 'ar'? 'موقع ' .\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name .' الهدف منه سهولة التواصل بينك وبين مقدمي الخدمات والمساعدة علي القضاء علي مشاكل كثيره مثل البطاله حيث يمكن اصحاب المهن ايضا من التسجيل والتواصل مع من حوله في كل مكان وقبول الحجوزات والتواصل معهم كما يمكن مقدم الخدمة ايضا روئية الاحصائيات الخاصه بصفحته الشخصية .': \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name .'  website aims to facilitate communication between you and service providers and to help eliminate many problems such as unemployment, where professionals can also register and communicate with those around him everywhere, accept reservations and communicate with them, and the service provider can also see the statistics on his personal page. ' }}
 
             </p>
+
+                                <div class="buttons d-flex flex-row justify-content-center" style="margin-top: 10px">
+
+                                    
+                                                                    <div class="startNow" style="margin: auto 5px">
+                                                                        <a href="{{route('home')}}" class="button_1_style">{{ Config::get('app.locale') == 'ar' ? 'ابدأ الان' : 'Start Now' }}</a>
+                                                                    </div>
+                                 </div>
         </div>
         <div class="image">
             <img src="{{ asset('Website_Assets/assets/images/message.png') }}" alt="our message image">
@@ -181,6 +229,7 @@
     <section class="reviews">
 
         <div class="items container" data-aos="fade-up" data-aos-duration="3000">
+            
             <div class="item">
                 <img src="{{ asset('Website_Assets/assets/icons/quitos.png') }}" alt="quitos image">
                 <img src="{{ asset('Website_Assets/assets/images/review_1.jpg') }}" alt="Ms.Yassmin Alaa">

@@ -214,7 +214,7 @@ public function reservation(Request $request, $id){
 
         $order =     $order->fresh($with = ['user.country','user.city','user.state','provider.country','provider.city','provider.state','orderStatus']);
 
-        Mail::to($order->provider->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? ('لقد تم ارسال لك حجز جديد يرجي مراجعته ❤️.') : ('A new reservation has been sent to you, please review it ❤️'),route('provider.index')));
+        Mail::to($order->provider->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? ('لقد تم ارسال لك حجز جديد يرجي مراجعته ❤️.') : ('A new reservation has been sent to you, please review it ❤️'),route('provider.index')));
 
         NewOrderSocket::dispatch( $order);
         return myAjaxResponse($order, (Config::get('app.locale') == 'ar' ? '.تم الارسال بنجاح' : 'Send Successfully. '));

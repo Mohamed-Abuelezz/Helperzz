@@ -387,8 +387,7 @@ width: 50px;
 
 
 .infoMobile{
-  height: unset;
-  position: relative;
+  min-height: 350px;  position: relative;
 background-color: white;
 border: 1px solid;
 border-radius: 10px;
@@ -478,7 +477,7 @@ align-items: flex-start;
 
 }
 .infoMobile .bottomItems .cats .others ul {
-  height: 100px;
+  height: 70px;
   overflow-y: scroll;
   padding: 0;
   font-size: 1.5vw;
@@ -568,7 +567,7 @@ z-index: 2;
 
 /******************* Comments Section */
 .Comments{
-  border: .005px solid gray;
+  border: 1px solid gray;
   padding: 10px;
   border-radius: 10px;
   width: 60%;
@@ -591,7 +590,7 @@ z-index: 2;
 }
 @media (max-width: 991.98px) { 
   .Comments{
-    border: .005px dotted gray;
+    border: 1px solid gray;
     padding: 10px;
     border-radius: 10px;
     width: 100%;

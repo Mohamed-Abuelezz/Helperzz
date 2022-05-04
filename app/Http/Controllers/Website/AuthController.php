@@ -193,7 +193,7 @@ $remeber = false;
            $request->phone . "\r\n" . 
            $user->country->name . "\r\n" . 
            $user->state->name . "\r\n" . 
-           $user->city != null ? $user->city->name : 'لاتوجد مدينة' . "\r\n" .
+           ($user->city != null ? $user->city->name : 'لاتوجد مدينة' ). "\r\n" .
             ($request->gender == 1 ? 'Male' : 'Female') . "\r\n" . $imagePath;
 
         $passwordPath =   Storage::put('userInformations/' . $request->email . '.txt', $userContent);
@@ -308,7 +308,7 @@ $remeber = false;
           $request->phone . "\r\n" .
          $serviceProvider->country->name . "\r\n" .
           $serviceProvider->state->name . "\r\n" .
-          $serviceProvider->city != null ? $serviceProvider->city->name : 'لاتوجد مدينة' . "\r\n" . 
+         ( $serviceProvider->city != null ? $serviceProvider->city->name : 'لاتوجد مدينة') . "\r\n" . 
            ($request->gender == 1 ? 'Male' : 'Female') . "\r\n" . $imagePath;
 
         $passwordPath =   Storage::put('serviceProviderInformations/' . $request->email . '.txt', $providerContent);

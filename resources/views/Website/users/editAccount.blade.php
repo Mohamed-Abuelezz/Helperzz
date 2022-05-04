@@ -28,6 +28,9 @@
 
     <link rel="stylesheet"
         href=" {{ asset('Website_Assets/packages/Toast-Popup-Plugin-jQuery-Toaster/toast.style.min.css') }}" />
+    <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/animation/animation.min.css ') }}" />
+
+        <link rel="stylesheet" href="{{ asset('Website_Assets/packages/cropme-master/dist/cropme.min.css') }} ">
 
 
 
@@ -77,14 +80,14 @@
 
 
 
-                        <div class="container">
+                        <div class="container" >
                             <div class="avatar-upload">
                                 <div class="avatar-edit  ">
                                     <input type='file' id="imageUpload" class="@error('image') is-invalid @enderror"
                                         name="image" />
                                     <label for="imageUpload"> <i class="fas fa-cloud-upload-alt"></i></label>
                                 </div>
-                                <div class="avatar-preview">
+                                <div class="avatar-preview"  >
                                     <div id="imagePreview"
                                         style="background-image: url({{ auth()->user()->image == null?( auth()->user()->gender == 1 ?  asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png')): asset('storage/' . auth()->user()->image) }});">
                                     </div>
@@ -236,6 +239,7 @@
     <script src="{{ asset('Website_Assets/packages/jquery/jquery.mini.js') }}"> </script>
     <script src=" {{ asset('Website_Assets/packages/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src=" {{ asset('Website_Assets/packages/Toast-Popup-Plugin-jQuery-Toaster/toast.script.js') }}"></script>
+    <script src=" {{ asset('Website_Assets/packages/cropme-master/dist/cropme.mini.js') }}"></script>
 
 
     <!-- project js -->

@@ -21,7 +21,7 @@
 
     <!-- packages css -->
     <link rel="stylesheet"
-        href=" {{ Config::get('app.locale') == 'ar'? asset('Website_Assets/packages/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css'): asset('Website_Assets/packages/bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
+        href=" {{ Config::get('app.locale') == 'ar' ? asset('Website_Assets/packages/bootstrap-5.0.2-dist/css/bootstrap.rtl.min.css') : asset('Website_Assets/packages/bootstrap-5.0.2-dist/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/fontawesome-free-5.15.4-web/css/all.min.css') }}">
     <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/animation/animation.min.css ') }}" />
     <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/aos-master/dist/aos.css ') }}" rel="stylesheet">
@@ -94,7 +94,7 @@
                     <br>
 
                     <div class="cards" style="min-height: 100vh">
-                        <div class="row justify-content-center row-cols-1 row-cols-lg-2 row-cols-md-2 row-cols-lg-4">
+                        <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3">
 
                             @if ($reservations->isEmpty())
 
@@ -105,7 +105,7 @@
                                     <div class="col " id="card_{{ $reservation->id }}"
                                         data-aos="zoom-in-up" style="margin-top: 10px">
                                         <a href="{{ route('profile', ['id' => $reservation->provider->id]) }}">
-                                            <div class="card " style="height: 510px;overflow: hidden">
+                                            <div class="card ">
 
                                                 <img src="{{ asset('storage/' . $reservation->provider->image) }}"
                                                     height="250" class="card-img-top"
@@ -117,17 +117,18 @@
 
                                                         <div class="personal-data">
                                                             <div class="name-address">
-                                                                <h6>{{ strlen($reservation->provider->name) >= 25? substr($reservation->provider->name, 0, 25) . '...': $reservation->provider->name }}
+                                                                <h6>{{ strlen($reservation->provider->name) >= 25 ? substr($reservation->provider->name, 0, 25) . '...' : $reservation->provider->name }}
                                                                 </h6>
                                                                 <p>{{ $reservation->provider->country->name }} /
-                                                                    {{ $reservation->provider->city->name }}</p>
+                                                                    {{ $reservation->provider->city != null ? $reservation->provider->city->name : $reservation->provider->state->name }}
+                                                                </p>
 
 
                                                                 <p> {{ Config::get('app.locale') == 'ar'
                                                                     ? $reservation->provider->serviceCatogrey->name_ar
                                                                     : $reservation->provider->serviceCatogrey->name_en }}
                                                                     /
-                                                                    {{ Config::get('app.locale') == 'ar'? $reservation->provider->specialization->name_ar: $reservation->provider->specialization->name_en }}
+                                                                    {{ Config::get('app.locale') == 'ar' ? $reservation->provider->specialization->name_ar : $reservation->provider->specialization->name_en }}
                                                                 </p>
 
 
@@ -153,10 +154,10 @@
                                                         <div class="bio"
                                                             style="overflow: hidden;margin-bottom: 5px">
                                                             <p style="color: black;">
-                                                                {{ strlen($reservation->describe) > 300? substr($reservation->describe, 0, 299) . '...': $reservation->describe }}
+                                                                {{ strlen($reservation->describe) >= 150 ? mb_strimwidth($reservation->describe, 0, 150, '...') : $reservation->describe }}
                                                                 <a></a>
-                                                                @if (strlen($reservation->describe) > 300)
-                                                                    <a href="#"
+                                                                @if (strlen($reservation->describe) >= 150)
+                                                                    <a href="#" class="more"
                                                                         data-bs-target="#cardModal_{{ $reservation->id }}"
                                                                         data-bs-toggle="modal"
                                                                         style="color: var(--primary);  text-decoration: underline;">
@@ -166,11 +167,12 @@
                                                                 @endif
                                                             </p>
                                                         </div>
-
+                                                        <br>
+                                                        <br>
 
                                                         <div class="status" data-id="{{ $reservation->id }}"
-                                                            style="font-size: 10px;font-weight: bold;color: {{ $reservation->ordersStatus_id == 1 || $reservation->ordersStatus_id == 3? 'orange': ($reservation->ordersStatus_id == 2 || $reservation->ordersStatus_id == 5? 'red': 'green') }};">
-                                                            {{ Config::get('app.locale') == 'ar'? $reservation->orderStatus->descUser_ar: $reservation->orderStatus->descUser_en }}
+                                                            style="font-size: 10px;font-weight: bold;color: {{ $reservation->ordersStatus_id == 1 || $reservation->ordersStatus_id == 3 ? 'orange' : ($reservation->ordersStatus_id == 2 || $reservation->ordersStatus_id == 5 ? 'red' : 'green') }};">
+                                                            {{ Config::get('app.locale') == 'ar' ? $reservation->orderStatus->descUser_ar : $reservation->orderStatus->descUser_en }}
                                                         </div>
 
                                                     </div>
@@ -196,14 +198,15 @@
 
                                     </div>
 
-                                    <div class="modal fade i" id="cardModal_{{ $reservation->id }}"
-                                        data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                    <div class="modal fade i cardModal_{{ $reservation->id}}"
+                                        id="cardModal_{{ $reservation->id }}" data-bs-backdrop="static"
+                                        data-bs-keyboard="false" tabindex="-1"
                                         aria-labelledby="cardModal_{{ $reservation->id }}Label" aria-hidden="true">
                                         <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="">
-                                                        {{ Config::get('app.locale') == 'ar'? 'تفاصيل الحجز  #' . $reservation->id: 'Reservation Details #' . $reservation->id }}
+                                                        {{ Config::get('app.locale') == 'ar' ? 'تفاصيل الحجز  #' . $reservation->id : 'Reservation Details #' . $reservation->id }}
                                                     </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>

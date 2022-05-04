@@ -93,13 +93,15 @@ class OrdersController extends Controller
                 # code...
                 $order = $order->fresh($with = ['user','provider','orderStatus']); 
                 ChangeOrderStatus::dispatch( $order);
-                Mail::to($order->user->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? (' تم ارسال الحجز  لمقدم الخدمة '.$order->provider->name.' وبانتظار الرد')  :  ( 'The reservation has been sent to the service provider '.$order->provider->name.' And waiting for a reply'), config('app.url').'/'.'myreservations'));
-                Mail::to($order->provider->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? (' قام '.$order->user->name.'  بارسال طلب جديد وينتظر ردك')  :  ( $order->user->name.'  sent a new request and is waiting for your reply '), config('app.url').'/'.'provider'));
+                Mail::to($order->user->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? (' تم ارسال الحجز  لمقدم الخدمة '.$order->provider->name.' وبانتظار الرد')  :  ( 'The reservation has been sent to the service provider '.$order->provider->name.' And waiting for a reply'), config('app.url').'/'.'myreservations'));
+                Mail::to($order->provider->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? (' قام '.$order->user->name.'  بارسال طلب جديد وينتظر ردك')  :  ( $order->user->name.'  sent a new request and is waiting for your reply '), config('app.url').'/'.'provider'));
     
             }else{
 //dd(config('app.url'));
+$order = $order->fresh($with = ['user','provider','orderStatus']); 
+
                 ChangeOrderStatus::dispatch( $order);
-                Mail::to($order->user->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? (' تم رفض ارسال الطلب لمقدم الخدمة '.$order->provider->name.' يرجي الالتزام بالشروط والاحكام اولا')  :  ( ' The request was refused to be sent to the service provider '.$order->provider->name.' Please adhere to the terms and conditions first '), config('app.url').'/'.'myreservations'));
+                Mail::to($order->user->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? (' تم رفض ارسال الطلب لمقدم الخدمة '.$order->provider->name.' يرجي الالتزام بالشروط والاحكام اولا')  :  ( ' The request was refused to be sent to the service provider '.$order->provider->name.' Please adhere to the terms and conditions first '), config('app.url').'/'.'myreservations'));
     
             }
 

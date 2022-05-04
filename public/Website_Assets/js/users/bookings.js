@@ -5,8 +5,8 @@ $(document).ready(function() {
   $(".remove").click(function(){
     var id=$(this).attr("data-id");
 
-    showNoteAlert({msg: lang == 'ar' ? `هل تريد الغاء الحجز رقم ${$(this).attr("data-id")} ؟` : `Do you want to cancel the reservation ${$(this).attr("data-id")} ?`,
-    confirmButtonText: lang == 'ar' ? 'الغاء الحجز' : 'Cancel Reservation' }, function(){
+    showNoteAlert({msg: lang == 'ar' ? `هل تريد حذف الحجز رقم ${$(this).attr("data-id")} ؟` : `Do you want to delete the reservation ${$(this).attr("data-id")} ?`,
+    confirmButtonText: lang == 'ar' ? 'حذف الحجز' : 'Delete Reservation', color:'#e30000'}, function(){
 
       var request = sendAjaxRequest({url:(APP_URL+'/'+id+'/api/reservations/remove'),method: 'POST',data:{}});
       
@@ -43,7 +43,14 @@ $(document).ready(function() {
   });
 
 
+  $(document).on("click", "#reservationDetails_btn" , function() {
 
+
+
+console.log('oook');
+
+
+  });
 
 
 

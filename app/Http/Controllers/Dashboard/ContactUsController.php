@@ -92,7 +92,7 @@ class ContactUsController extends Controller
                 $contactUs->save();
 
 
-            Mail::to($contactUs->email)->send(new DashboardMail( $msg,null));
+            Mail::to($contactUs->email)->queue(new DashboardMail( $msg,null));
                 
 
 

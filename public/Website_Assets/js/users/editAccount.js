@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function() {
 
 
@@ -10,6 +13,13 @@ $(document).ready(function() {
                 $('#imagePreview').fadeIn(650);
             }
             reader.readAsDataURL(input.files[0]);
+
+            var example = $('#imagePreview').cropme();
+example.cropme('bind', {
+  url: e.target.result
+});
+
+
         }
     }
     $("#imageUpload").change(function() {

@@ -59,7 +59,7 @@ class ProviderController extends Controller
 
 
                ChangeOrderStatus::dispatch( $reservation);
-               Mail::to($reservation->user->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? ('قام مقدم الخدمة '.$reservation->provider->name.' بالموافقة علي الحجز الخاص بك') : ('The service provider '.$reservation->provider->name.'  has approved your reservation'),route('myreservations')));
+               Mail::to($reservation->user->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? ('قام مقدم الخدمة '.$reservation->provider->name.' بالموافقة علي الحجز الخاص بك') : ('The service provider '.$reservation->provider->name.'  has approved your reservation'),route('myreservations')));
 
 
 
@@ -85,7 +85,7 @@ class ProviderController extends Controller
         Order::where('id', $id)->update(['ordersStatus_id'=>5]);
         $reservation = Order::where('id', $id)->with(['user','provider','orderStatus'])->first();
         ChangeOrderStatus::dispatch( $reservation);
-        Mail::to($reservation->user->email)->send(new DashboardMail(Config::get('app.locale') == 'ar' ? ('قام مقدم الخدمة '.$reservation->provider->name.' برفض  الحجز الخاص بك') : ('The service provider '.$reservation->provider->name.'  has rejected your reservation'),route('myreservations')));
+        Mail::to($reservation->user->email)->queue(new DashboardMail(Config::get('app.locale') == 'ar' ? ('قام مقدم الخدمة '.$reservation->provider->name.' برفض  الحجز الخاص بك') : ('The service provider '.$reservation->provider->name.'  has rejected your reservation'),route('myreservations')));
 
         return myAjaxResponse( $reservation);
 

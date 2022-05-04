@@ -817,10 +817,8 @@
                                         style="display: {{ old('state') != null &&\App\Models\State::where('id', old('state'))->with(['cities'])->first()->cities->isEmpty() == false? 'block': 'none' }}  ">
                                         <div class="item">
 
-                                            <label for="id_label_single">
                                                 <label
-                                                    for="floatingSelectGridCity">{{ Config::get('app.locale') == 'ar' ? 'المدينة' : 'City' }}</label>
-                                            </label>
+                                                    for="floatingSelectGridCity">{{ Config::get('app.locale') == 'ar' ? ' المدينة [اختياري]' : 'City [Optional]' }}</label>
                                             <div class="loadDiv" id="myLoadingCity2">
 
                                                 <select

@@ -32,7 +32,7 @@
     <div class="footer container-lg">
 
         <p>
-            All Copyright {{ \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name}} 2022
+            All Copyright Reserved  2022
         </p>
 
 

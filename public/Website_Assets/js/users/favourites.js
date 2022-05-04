@@ -5,7 +5,7 @@ $(document).ready(function() {
     $(".remove").click(function(){
       var id=$(this).attr("data-id");
 
-      showNoteAlert({msg: lang == 'ar' ? `هل تريد الحذف من المفضلة ؟` : `Do you want to remove from the favourites? `,
+      showNoteAlert({msg: lang == 'ar' ? `هل تريد الحذف من المفضلة ؟` : `Do you want to remove from the favourites? `, color:'#e30000',
     confirmButtonText: lang == 'ar' ? 'الحذف' : 'Remove' }, function(){
 
   
