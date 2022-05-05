@@ -48,9 +48,9 @@
 }
 .cards .content .personal-data {
   display: flex;
-  justify-content: space-between;
+   justify-content: space-between; 
   padding: 5px 0px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .cards .content .personal-data h6 {
@@ -175,7 +175,7 @@ font-size: 15px;
   }
   
   .bookings .cards .content .bio{
-    height: 130px; 
+    /* height: 70px;  */
  align-items: flex-end;
  }
 }

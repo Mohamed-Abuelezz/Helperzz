@@ -12,7 +12,7 @@
   background-color: white;
   color: black;
   padding: 10px;
-  border: 1px solid;
+  border: 1px solid black;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
 
@@ -23,7 +23,7 @@
   opacity: .95;
   color: black;
   padding: 10px;
-  border: 1px solid;
+  border: 1px solid black;
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
   border-top-right-radius: 10px;
@@ -167,8 +167,6 @@
   font-size: 15px;
 }
 .info .otherDataDiv .cats .others ul {
-  height: 100px;
-  overflow-y: scroll;
   padding: 0;
 }
 .info .otherDataDiv .rates {
@@ -247,7 +245,7 @@
   position: absolute;
   top: 20px;
   right: 15px;
-z-index: 2;
+z-index: 9999;
 
 }
 .more-menu {
@@ -350,7 +348,7 @@ z-index: 2;
   position: absolute;
   top: 20px;right: unset;
   left: 15px;
-z-index: 2;
+z-index: 9999;
 
 }
 .info .otherDataDiv .favButton a {
@@ -477,8 +475,6 @@ align-items: flex-start;
 
 }
 .infoMobile .bottomItems .cats .others ul {
-  height: 70px;
-  overflow-y: scroll;
   padding: 0;
   font-size: 1.5vw;
 }

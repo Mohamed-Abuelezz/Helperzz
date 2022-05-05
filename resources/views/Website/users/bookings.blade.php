@@ -94,7 +94,7 @@
                     <br>
 
                     <div class="cards" style="min-height: 100vh">
-                        <div class="row justify-content-center row-cols-1 row-cols-md-2 row-cols-lg-3">
+                        <div class="row justify-content-center row-cols-1 row-cols-md-3 row-cols-xlg-4">
 
                             @if ($reservations->isEmpty())
 
@@ -113,7 +113,7 @@
 
                                                 <div class="card-body">
 
-                                                    <div class="content d-flex flex-column justify-content-between">
+                                                    <div class="content d-flex flex-column ">
 
                                                         <div class="personal-data">
                                                             <div class="name-address">
@@ -167,8 +167,6 @@
                                                                 @endif
                                                             </p>
                                                         </div>
-                                                        <br>
-                                                        <br>
 
                                                         <div class="status" data-id="{{ $reservation->id }}"
                                                             style="font-size: 10px;font-weight: bold;color: {{ $reservation->ordersStatus_id == 1 || $reservation->ordersStatus_id == 3 ? 'orange' : ($reservation->ordersStatus_id == 2 || $reservation->ordersStatus_id == 5 ? 'red' : 'green') }};">
