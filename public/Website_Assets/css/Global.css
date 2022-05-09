@@ -382,3 +382,9 @@ justify-content: center;
 .atropos a {
 	pointer-events: all;
 }
+
+.zoom:hover{
+   transform: scale(2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */;
+   border-radius: 0;
+   transition: all 2s;
+}

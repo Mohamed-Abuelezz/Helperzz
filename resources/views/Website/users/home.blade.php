@@ -30,7 +30,6 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href=" {{ asset('Website_Assets/packages/Toast-Popup-Plugin-jQuery-Toaster/toast.style.min.css') }}" />
-        <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.css') }}" />
 
 
     <!-- project css -->
@@ -439,7 +438,6 @@
     <script src=" {{ asset('Website_Assets/packages/js-loading-overlay-master/dist/js-loading-overlay.min.js') }}">
     </script>
     <script src=" {{ asset('Website_Assets/packages/sweet alert/dist/sweetalert2.min.js') }}"></script>
-    <script  src=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.js') }}" ></script>
 
 
     <!-- project js -->

@@ -1,16 +1,16 @@
-Atropos({
-  el: `.my-atropos`,
-  shadow: false,
+// Atropos({
+//   el: `.my-atropos`,
+//   shadow: false,
   
-  shadowScale: .800,
-  activeOffset: 15,
+//   shadowScale: .800,
+//   activeOffset: 15,
 
-  highlight:false,
+//   highlight:false,
 
-  rotateXMax:1,
-  rotateYMax:1,
-  // rest of parameters
-});
+//   rotateXMax:1,
+//   rotateYMax:1,
+//   // rest of parameters
+// });
 
 if (isProviderAuth) {
   const parser2 = new DOMParser();
@@ -581,7 +581,7 @@ $('body').on('click', '#sendComment', function () {
   <div class="card mb-3" style="max-width: 100%;">
   <div class="row ">
       <div class="col-12 col-lg-1">
-          <img src=" ${response['data']['user']['image'] == null ?  (APP_URL + '/Website_Assets/assets/images/userImageDefault.png')  : (APP_URL + '/storage/' + response['data']['user']['image'])  }"  width="80" height="80" class="rounded-circle" alt="...">
+          <img src=" ${response['data']['user']['image'] == null ?  (APP_URL + (response['data']['user']['gender'] == 1? '/Website_Assets/assets/images/userImageDefault_Male.png' : '/Website_Assets/assets/images/userImageDefault_Female.png'))  : (APP_URL + '/storage/' + response['data']['user']['image'])  }"   width="60" height="60" style="margin: auto"  class="rounded-circle" alt="${response['data']['user']['name']}">
       </div>
       <div class="col-12 col-lg-10">
           <div class="card-body">

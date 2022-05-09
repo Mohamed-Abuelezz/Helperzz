@@ -268,7 +268,7 @@ font-size: 15px;
   }
   
   .bookings .cards .content .bio{
-    height: 130px; 
+    height: auto; 
  align-items: flex-end;
  }
 }

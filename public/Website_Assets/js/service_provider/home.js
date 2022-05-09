@@ -110,7 +110,6 @@ var id = $(this).attr("data-id");
 
 
 
-
   $('#reservationModalTitle').append( lang == 'ar' ?  `تفاصيل الحجز  #${$(this).attr("data-id")}` :   `Reservation Details  #${$(this).attr("data-id")}`);
   $('#reservationModalbody').append(`
 
@@ -127,7 +126,7 @@ var id = $(this).attr("data-id");
   <hr style="width:80%;margin:auto"/>
   <br/>
 
-  <h6 style="color:var(--primary);font-size:20px;text-align:auto">${lang == 'ar' ? 'البريد الاليكنروني' : 'Email'}</h6>
+  <h6 style="color:var(--primary);font-size:20px;text-align:auto">${lang == 'ar' ? 'البريد الاليكتروني' : 'Email'}</h6>
 
    <a href="mailto:${reserv['user']['email']}?subject=${
      lang == 'ar' ?

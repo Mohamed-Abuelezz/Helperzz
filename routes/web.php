@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Auth\Events\Verified;
 
@@ -31,7 +32,9 @@ use App\Models\Favourite;
 use App\Models\MoreService;
 use App\Models\Specialization;
 use App\Models\TermsAndCondition;
+use App\Models\WebsiteViews;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +57,10 @@ Route::get('/test', function () {
 
  // Artisan::call('storage:link');
  Artisan::call('storage:link');
+$contents = File::get(storage_path('app/emailsMarketing/emails.txt'));
+$array = explode(',', $contents);
+
+dd($array);
 
     
     return 'ok';
@@ -245,6 +252,20 @@ Route::post('/{id}/api/profile/reservation', [ProfileController::class, 'reserva
 
 
 Route::get('/index', function () {
+          
+  $websiteViews =     WebsiteViews::where('mac', $_SERVER['REMOTE_ADDR'])->whereDate('created_at', Carbon::today())->get();
+  //dd($websiteViews);
+          if ($websiteViews->isEmpty()) {
+              # code...
+           //   dd(empty($ServiceProviderView));
+  
+              $websiteViews = new WebsiteViews;
+              $websiteViews->mac =  $_SERVER['REMOTE_ADDR'];
+              $websiteViews->save();
+  
+  
+        //      return redirect()->route('index', []);
+          }
 
   return view('Website.index');
   

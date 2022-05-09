@@ -225,13 +225,10 @@ img[src$="#custom_marker"]{
   height: 415px;
 }
 .cards .card:hover  {
-  /* background-color: var(--primary);
-  color: white !important; */
-  /* cursor: pointer;
-  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15); */
+
   cursor: pointer;
-  /* box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
-  transition: box-shadow 1s; */
+  box-shadow: 0 .5rem 1rem rgba(0,0,0, .15);
+  transition: box-shadow 1s;
 }
 
 .atropos:hover  {

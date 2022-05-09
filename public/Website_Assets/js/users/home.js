@@ -1,26 +1,26 @@
 
-$('.atropos').each(function(i, obj) {
-  //test
-  var id = $(this).data("id");
-  console.log(id);
-   Atropos({
-    el: `.my-atropos_${id}`,
-    shadow: true,
-    alwaysActive:false,
+// $('.atropos').each(function(i, obj) {
+//   //test
+//   var id = $(this).data("id");
+//   console.log(id);
+//    Atropos({
+//     el: `.my-atropos_${id}`,
+//     shadow: true,
+//     alwaysActive:false,
   
-    shadowScale: .800,
-    activeOffset: 50,
+//     shadowScale: .800,
+//     activeOffset: 50,
   
-    highlight:true,
+//     highlight:true,
   
-    rotateXMax:5,
-    rotateYMax:5,
+//     rotateXMax:5,
+//     rotateYMax:5,
   
-    // rest of parameters
-  });
+//     // rest of parameters
+//   });
   
 
-});
+// });
 
 
 // ok meds 

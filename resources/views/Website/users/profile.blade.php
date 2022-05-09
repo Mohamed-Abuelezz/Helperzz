@@ -28,7 +28,6 @@
         rel="stylesheet">
     <link rel="stylesheet"
         href=" {{ asset('Website_Assets/packages/Toast-Popup-Plugin-jQuery-Toaster/toast.style.min.css') }}" />
-    <link rel="stylesheet" href=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.css') }}" />
 
 
     <!-- project css -->
@@ -84,14 +83,14 @@
 
         <section>
 
-            <div class="atropos my-atropos">
+            {{-- <div class="atropos my-atropos">
                 <!-- scale container (required) -->
                 <div class="atropos-scale">
                     <!-- rotate container (required) -->
                     <div class="atropos-rotate">
                         <!-- inner container (required) -->
                         <div class="atropos-inner">
-                            <!-- put your custom content here -->
+                            <!-- put your custom content here --> --}}
 
                             <div class="info d-none d-lg-flex container">
 
@@ -99,6 +98,7 @@
 
                                     <div class="personData">
                                         <img src="{{ asset('storage/' . $serviceProvider->image) }}"
+                                     class="zoom"
                                             alt="{{ $serviceProvider->name }}">
                                         <p>{{ $serviceProvider->name }}</p>
                                         <span>{{ $serviceProvider->country->name }} /
@@ -231,19 +231,19 @@
 
                             </div>
 
-                        </div>
+                        {{-- </div>
                     </div>
                 </div>
 
 
-            </div>
+            </div> --}}
 
 
             <div class="infoMobile d-flex d-lg-none container">
 
 
                 <div class="personData">
-                    <img src="{{ asset('storage/' . $serviceProvider->image) }}"
+                    <img  src="{{ asset('storage/' . $serviceProvider->image) }}"
                         alt="{{ $serviceProvider->name }}">
                     <p>{{ $serviceProvider->name }}</p>
                     <span>{{ $serviceProvider->country->name }} / {{ ($serviceProvider->city != null ?  $serviceProvider->city->name :  $serviceProvider->state->name)  }}</span>
@@ -420,7 +420,7 @@
                             <div class="card mb-3"  style="max-width: 100%;">
                                 <div class="row justify-content-start" >
                                     <div class="col-12 col-lg-1">
-                                        <img src=" {{ $comment->user->image == null? ($comment->user->gender == 1? asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png')): asset('storage/' . $comment->user->image) }}"
+                                        <img class="zoom" src=" {{ $comment->user->image == null? ($comment->user->gender == 1? asset('Website_Assets/assets/images/userImageDefault_Male.png'): asset('Website_Assets/assets/images/userImageDefault_Female.png')): asset('storage/' . $comment->user->image) }}"
                                             width="60" height="60" style="margin: auto" class="rounded-circle"
                                             alt="{{ $comment->user->name }}">
                                     </div>
@@ -799,7 +799,6 @@
     </script>
     <script src=" {{ asset('Website_Assets/packages/sweet alert/dist/sweetalert2.min.js') }}"></script>
     <script src=" {{ asset('Website_Assets/packages/sharer.js-main/sharer.min.js') }}"></script>
-    <script src=" {{ asset('Website_Assets/packages/atropos-master/build/atropos.js') }}"></script>
 
     <!-- project js -->
 

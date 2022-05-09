@@ -9,8 +9,8 @@
         {{ Config::get('app.locale') == 'en'? (\App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name.' helps you communicate with professionals and service providers located near you for free and with ease. Browse now.'):( \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->website_name.' يساعدك في التواصل مع اصحاب المهن ومقدمين الخدمات الموجدين بالقرب منك مجانا وبكل سهولة تصفح الان.') }}
     </title>
     <meta name="description"
-        content="{{ Config::get('app.locale') == 'en'? \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->meta_descEn: \App\Models\WebsiteConfig::where(['isActive' => 1])->first()->meta_descAr }}">
-        <meta name="googlebot" content="index,follow">
+        content="{{ Config::get('app.locale') == 'en'? 'You can see the providers and professions you need, search for them and see their reviews.':
+         'يمكنك رؤية مقدمي الخدمات واصحاب المهن الذين تحتاجهم والبحث عنهم ورئية تقييماتهم .' }}">
 
 
 
